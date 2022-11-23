@@ -9,8 +9,8 @@
 <form method="post" action="users">
     <b style="font-size: large">User type:&nbsp;</b>
     <select name="userType">
-        <option value="admin">Admin</option>
-        <option value="user">User</option>
+        <option value="admins">Admin</option>
+        <option value="users">User</option>
     </select>
     <button type="submit">Select</button>
 </form>
