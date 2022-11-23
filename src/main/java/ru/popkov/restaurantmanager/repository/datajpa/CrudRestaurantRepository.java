@@ -6,5 +6,4 @@ import ru.popkov.restaurantmanager.model.Restaurant;
 
 @Transactional(readOnly = true)
 public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Integer> {
-
 }

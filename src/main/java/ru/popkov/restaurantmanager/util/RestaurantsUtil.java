@@ -7,6 +7,9 @@ import java.util.List;
 
 public class RestaurantsUtil {
 
+    private RestaurantsUtil() {
+    }
+
     public static List<RestaurantTo> getTos(List<Restaurant> restaurants) {
         return restaurants.stream()
                 .map(RestaurantsUtil::createTo)

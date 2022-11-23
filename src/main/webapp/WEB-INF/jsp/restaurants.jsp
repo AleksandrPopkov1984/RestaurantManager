@@ -22,8 +22,8 @@
             <tr>
                 <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
-                <td><a href="user?action=openFood&id=${restaurant.id}">Open Food</a></td>
-                <td><a href="user?action=vote&id=${restaurant.id}">Vote</a></td>
+                <td><a href="${pageContext.request.contextPath}/users/openFood?id=${restaurant.id}">Open Food</a></td>
+                <td><a href="${pageContext.request.contextPath}/users/vote?id=${restaurant.id}">Vote</a></td>
             </tr>
         </c:forEach>
     </table>
