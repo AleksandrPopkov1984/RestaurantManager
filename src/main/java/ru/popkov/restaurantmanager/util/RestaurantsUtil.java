@@ -7,13 +7,13 @@ import java.util.List;
 
 public class RestaurantsUtil {
 
-    public static List<RestaurantTo> getRestaurantsTo(List<Restaurant> restaurants) {
+    public static List<RestaurantTo> getTos(List<Restaurant> restaurants) {
         return restaurants.stream()
-                .map(RestaurantsUtil::createRestaurantTo)
+                .map(RestaurantsUtil::createTo)
                 .toList();
     }
 
-    public static RestaurantTo createRestaurantTo(Restaurant restaurant) {
+    public static RestaurantTo createTo(Restaurant restaurant) {
         return new RestaurantTo(restaurant.getId(), restaurant.getName());
     }
 }
