@@ -2,7 +2,7 @@ package ru.popkov.restaurantmanager.model;
 
 import java.util.Date;
 
-public class Admin extends AbstractUser{
+public class Admin extends AbstractUser {
 
     public Admin() {
     }

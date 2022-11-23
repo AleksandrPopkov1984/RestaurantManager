@@ -1,6 +1,6 @@
 package ru.popkov.restaurantmanager.model;
 
-public class Restaurant extends AbstractBaseEntity{
+public class Restaurant extends AbstractBaseEntity {
 
     private String name;
 

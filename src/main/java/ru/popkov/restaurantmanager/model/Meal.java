@@ -2,7 +2,7 @@ package ru.popkov.restaurantmanager.model;
 
 import java.math.BigDecimal;
 
-public class Meal extends AbstractBaseEntity{
+public class Meal extends AbstractBaseEntity {
 
     private String name;
 

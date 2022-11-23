@@ -21,7 +21,7 @@ public class RegularUser extends AbstractUser {
     }
 
     public int vote(Integer restaurantId) {
-        if(Util.isBetweenHalfOpen(LocalTime.now(), LocalTime.of(0, 0), DEADLINE_TIME_FOR_CHANGE_VOTE)) {
+        if (Util.isBetweenHalfOpen(LocalTime.now(), LocalTime.of(0, 0), DEADLINE_TIME_FOR_CHANGE_VOTE)) {
             return restaurantId;
         } else {
             return 0;
