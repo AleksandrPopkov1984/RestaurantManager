@@ -1,7 +1,11 @@
 package ru.popkov.restaurantmanager.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Entity
+@Table(name = "admins")
 public class Admin extends AbstractUser {
 
     public Admin() {

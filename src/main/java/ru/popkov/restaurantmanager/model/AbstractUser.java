@@ -1,19 +1,40 @@
 package ru.popkov.restaurantmanager.model;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
+@MappedSuperclass
 public abstract class AbstractUser extends AbstractBaseEntity {
 
+    @Column(name = "surname", nullable = false)
+    @NotBlank
+    @Size(max = 128)
     protected String surname;
 
+    @Column(name = "name", nullable = false)
+    @NotBlank
+    @Size(max = 128)
     protected String name;
 
+    @Column(name ="email", nullable = false, unique = true)
+    @Email
+    @NotBlank
+    @Size(max = 128)
     protected String email;
 
+    @Column(name = "password", nullable = false)
+    @NotBlank
+    @Size(min = 5, max = 25)
     protected String password;
 
+    @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
     protected boolean enabled = true;
 
+    @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()", updatable = false)
     protected Date registered;
 
     public AbstractUser() {

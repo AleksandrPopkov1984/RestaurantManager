@@ -2,9 +2,13 @@ package ru.popkov.restaurantmanager.model;
 
 import ru.popkov.restaurantmanager.util.Util;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalTime;
 import java.util.Date;
 
+@Entity
+@Table(name = "users")
 public class RegularUser extends AbstractUser {
 
     private static final LocalTime DEADLINE_TIME_FOR_CHANGE_VOTE = LocalTime.of(18, 0);

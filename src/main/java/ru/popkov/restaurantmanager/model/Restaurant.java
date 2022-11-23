@@ -1,7 +1,18 @@
 package ru.popkov.restaurantmanager.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name = "restaurants")
 public class Restaurant extends AbstractBaseEntity {
 
+    @Column(name = "name", nullable = false)
+    @NotBlank
+    @Size(max = 128)
     private String name;
 
     public Restaurant() {
