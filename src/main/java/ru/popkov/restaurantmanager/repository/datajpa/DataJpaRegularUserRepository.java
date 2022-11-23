@@ -17,21 +17,26 @@ public class DataJpaRegularUserRepository implements RegularUserRepository {
 
     @Override
     public RegularUser save(RegularUser regularUser) {
-        return null;
+        return crudRegularUserRepository.save(regularUser);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return crudRegularUserRepository.delete(id) != 0;
     }
 
     @Override
     public RegularUser get(int id) {
-        return null;
+        return crudRegularUserRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public RegularUser getByEmail(String email) {
+        return crudRegularUserRepository.getByEmail(email);
     }
 
     @Override
     public List<RegularUser> getAll() {
-        return null;
+        return crudRegularUserRepository.findAll();
     }
 }

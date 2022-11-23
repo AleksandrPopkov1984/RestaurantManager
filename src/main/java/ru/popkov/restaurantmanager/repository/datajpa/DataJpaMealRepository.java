@@ -17,22 +17,22 @@ public class DataJpaMealRepository implements MealRepository {
 
     @Override
     public Meal save(Meal meal) {
-        return null;
+        return crudMealRepository.save(meal);
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return crudMealRepository.delete(id) != 0;
     }
 
     @Override
     public Meal get(int id) {
-        return null;
+        return crudMealRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<Meal> getAll() {
-        return null;
+        return crudMealRepository.findAll();
     }
 
     @Override

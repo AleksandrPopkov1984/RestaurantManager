@@ -8,9 +8,11 @@ public interface RegularUserRepository {
 
     RegularUser save(RegularUser regularUser);
 
-    boolean delete (int id);
+    boolean delete(int id);
 
     RegularUser get(int id);
+
+    RegularUser getByEmail(String email);
 
     List<RegularUser> getAll();
 }
