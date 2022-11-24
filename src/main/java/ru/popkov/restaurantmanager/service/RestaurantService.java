@@ -18,7 +18,7 @@ public class RestaurantService {
         this.repository = repository;
     }
 
-    public Restaurant save(Restaurant restaurant) {
+    public Restaurant create(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
         return repository.save(restaurant);
     }
