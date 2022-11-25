@@ -2,6 +2,7 @@ package ru.popkov.restaurantmanager.service.datajpa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import ru.popkov.restaurantmanager.model.RegularUser;
 import ru.popkov.restaurantmanager.service.AbstractServiceTest;
 import ru.popkov.restaurantmanager.service.RegularUserService;
@@ -53,6 +54,12 @@ public class RegularUserServiceTest extends AbstractServiceTest {
         newUser.setId(newId);
         USER_MATCHER.assertMatch(created, newUser);
         USER_MATCHER.assertMatch(service.get(newId), newUser);
+    }
+
+    @Test
+    void duplicateMailCreate() {
+        assertThrows(DataAccessException.class, () ->
+                service.create(new RegularUser(null, "DuplicateSurname", "DuplicateName", "s_anisimov@gmail.com", "password")));
     }
 
     @Test
