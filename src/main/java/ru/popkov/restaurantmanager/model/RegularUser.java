@@ -1,17 +1,12 @@
 package ru.popkov.restaurantmanager.model;
 
-import ru.popkov.restaurantmanager.util.Util;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
 @Table(name = "users")
 public class RegularUser extends AbstractUser {
-
-    private static final LocalTime DEADLINE_TIME_FOR_CHANGE_VOTE = LocalTime.of(18, 0);
 
     public RegularUser() {
     }
@@ -20,15 +15,7 @@ public class RegularUser extends AbstractUser {
         super(id, surname, name, email, password, enabled, registered);
     }
 
-    public RegularUser(Integer id, String surname, String name, String email, String password, Date registered) {
-        this(id, surname, name, email, password, true, registered);
-    }
-
-    public int vote(Integer restaurantId) {
-        if (Util.isBetweenHalfOpen(LocalTime.now(), LocalTime.of(0, 0), DEADLINE_TIME_FOR_CHANGE_VOTE)) {
-            return restaurantId;
-        } else {
-            return 0;
-        }
+    public RegularUser(Integer id, String surname, String name, String email, String password) {
+        this(id, surname, name, email, password, true, new Date());
     }
 }

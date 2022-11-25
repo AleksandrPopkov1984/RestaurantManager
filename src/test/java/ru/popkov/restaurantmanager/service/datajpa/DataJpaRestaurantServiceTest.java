@@ -2,9 +2,8 @@ package ru.popkov.restaurantmanager.service.datajpa;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.popkov.restaurantmanager.RestaurantTestData;
 import ru.popkov.restaurantmanager.model.Restaurant;
-import ru.popkov.restaurantmanager.service.AbstractRepositoryTest;
+import ru.popkov.restaurantmanager.service.AbstractServiceTest;
 import ru.popkov.restaurantmanager.service.RestaurantService;
 import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 
@@ -13,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertThrows;
 import static ru.popkov.restaurantmanager.RestaurantTestData.*;
 
-public class DataJpaRestaurantServiceTest extends AbstractRepositoryTest {
+public class DataJpaRestaurantServiceTest extends AbstractServiceTest {
 
     @Autowired
     private RestaurantService service;
@@ -21,7 +20,7 @@ public class DataJpaRestaurantServiceTest extends AbstractRepositoryTest {
     @Test
     public void get() {
         Restaurant restaurant = service.get(RESTAURANT1_ID);
-        RESTAURANT_MATCHER.assertMatch(restaurant, RestaurantTestData.restaurant1);
+        RESTAURANT_MATCHER.assertMatch(restaurant, restaurant1);
     }
 
     @Test
@@ -43,7 +42,7 @@ public class DataJpaRestaurantServiceTest extends AbstractRepositoryTest {
 
     @Test
     public void deleteNotFound() {
-        assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
+        assertThrows(NotFoundException.class, () -> service.delete(NOT_FOUND));
     }
 
     @Test

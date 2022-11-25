@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -35,7 +36,8 @@ public abstract class AbstractUser extends AbstractBaseEntity {
     protected boolean enabled = true;
 
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()", updatable = false)
-    protected Date registered;
+    @NotNull
+    protected Date registered = new Date();
 
     public AbstractUser() {
     }
