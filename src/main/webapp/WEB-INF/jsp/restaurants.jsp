@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Restaurants</title>
+    <base href="${pageContext.request.contextPath}/">
 </head>
 <body>
 <section>
@@ -22,7 +23,7 @@
             <tr>
                 <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
-                <td><a href="${pageContext.request.contextPath}/users/openFood?id=${restaurant.id}">Open Food</a></td>
+                <td><a href="users/restaurants/openFood?id=${restaurant.id}">Open Food</a></td>
                 <td><a href="${pageContext.request.contextPath}/users/vote?id=${restaurant.id}">Vote</a></td>
             </tr>
         </c:forEach>
