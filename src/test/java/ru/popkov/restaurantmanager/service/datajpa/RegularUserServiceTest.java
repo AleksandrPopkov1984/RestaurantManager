@@ -1,6 +1,6 @@
 package ru.popkov.restaurantmanager.service.datajpa;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.popkov.restaurantmanager.model.RegularUser;
 import ru.popkov.restaurantmanager.service.AbstractServiceTest;
@@ -9,7 +9,7 @@ import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 
 import java.util.List;
 
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.popkov.restaurantmanager.UserTestData.*;
 
 public class RegularUserServiceTest extends AbstractServiceTest {
@@ -24,29 +24,29 @@ public class RegularUserServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    public void getNotFound() {
+    void getNotFound() {
         assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
     }
 
     @Test
-    public void getAll() {
+    void getAll() {
         List<RegularUser> all = service.getAll();
         USER_MATCHER.assertMatch(all, users);
     }
 
     @Test
-    public void delete() {
+    void delete() {
         service.delete(USER1_ID);
         assertThrows(NotFoundException.class, () -> service.get(USER1_ID));
     }
 
     @Test
-    public void deleteNotFound() {
+    void deleteNotFound() {
         assertThrows(NotFoundException.class, () -> service.delete(NOT_FOUND));
     }
 
     @Test
-    public void create() {
+    void create() {
         RegularUser created = service.create(getNew());
         int newId = created.id();
         RegularUser newUser = getNew();
@@ -56,7 +56,7 @@ public class RegularUserServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    public void update() {
+    void update() {
         RegularUser updated = getUpdated();
         service.update(updated);
         USER_MATCHER.assertMatch(service.get(USER1_ID), updated);

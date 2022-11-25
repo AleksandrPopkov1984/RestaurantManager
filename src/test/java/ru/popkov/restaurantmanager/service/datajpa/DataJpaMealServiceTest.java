@@ -1,6 +1,6 @@
 package ru.popkov.restaurantmanager.service.datajpa;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.popkov.restaurantmanager.model.Meal;
 import ru.popkov.restaurantmanager.service.AbstractServiceTest;
@@ -9,7 +9,7 @@ import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 
 import java.util.List;
 
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.popkov.restaurantmanager.MealTestData.*;
 import static ru.popkov.restaurantmanager.MealTestData.getUpdated;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
@@ -20,35 +20,35 @@ public class DataJpaMealServiceTest extends AbstractServiceTest {
     private MealService service;
 
     @Test
-    public void get() {
+    void get() {
         Meal meal = service.get(MEAL1_ID);
         MEAL_MATCHER.assertMatch(meal, meal1);
     }
 
     @Test
-    public void getNotFound() {
+    void getNotFound() {
         assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
     }
 
     @Test
-    public void getAll() {
+    void getAll() {
         List<Meal> all = service.getAll();
         MEAL_MATCHER.assertMatch(all, meals);
     }
 
     @Test
-    public void delete() {
+    void delete() {
         service.delete(MEAL1_ID);
         assertThrows(NotFoundException.class, () -> service.get(MEAL1_ID));
     }
 
     @Test
-    public void deleteNotFound() {
+    void deleteNotFound() {
         assertThrows(NotFoundException.class, () -> service.delete(NOT_FOUND));
     }
 
     @Test
-    public void create() {
+    void create() {
         Meal created = service.create(getNew(), RESTAURANT1_ID);
         int newId = created.id();
         Meal newMeal = getNew();
@@ -58,7 +58,7 @@ public class DataJpaMealServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    public void update() {
+    void update() {
         Meal updated = getUpdated();
         service.update(updated, RESTAURANT1_ID);
         MEAL_MATCHER.assertMatch(service.get(MEAL1_ID), getUpdated());
