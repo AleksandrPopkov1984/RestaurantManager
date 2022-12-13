@@ -1,5 +1,7 @@
 package ru.popkov.restaurantmanager.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,8 @@ import java.util.Objects;
 @RequestMapping("/users/restaurants")
 public class RestaurantController {
 
+    private static final Logger log = LoggerFactory.getLogger(RestaurantController.class);
+
     @Autowired
     private RestaurantRepository repository;
 
@@ -28,6 +32,7 @@ public class RestaurantController {
 
     @GetMapping
     public String getRestaurants(Model model) {
+        log.info("restaurants");
         model.addAttribute("restaurants", getAll());
         return "restaurants";
     }
