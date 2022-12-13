@@ -7,7 +7,7 @@
 </head>
 <body>
 <section>
-    <h3><a href="index.html">Home</a></h3>
+    <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
@@ -23,7 +23,7 @@
             <tr>
                 <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
-                <td><a href="users/restaurants/openFood?id=${restaurant.id}">Open Food</a></td>
+                <td><a href="users/meals?restaurantId=${restaurant.id}">Open Food</a></td>
                 <td><a href="${pageContext.request.contextPath}/users/vote?id=${restaurant.id}">Vote</a></td>
             </tr>
         </c:forEach>

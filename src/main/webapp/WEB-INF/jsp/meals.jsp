@@ -6,7 +6,7 @@
 </head>
 <body>
 <section>
-    <h3><a href="index.html">Home</a></h3>
+    <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
     <br>
     <table border="1" cellpadding="8" cellspacing="0">
