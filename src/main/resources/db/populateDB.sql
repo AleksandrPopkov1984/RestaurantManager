@@ -3,6 +3,8 @@ FROM meals;
 DELETE
 FROM restaurants;
 DELETE
+FROM user_roles;
+DELETE
 FROM users;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
@@ -14,6 +16,16 @@ VALUES ('Igor', 'Vasiljev', 'i_vasiljev@gmail.com', '1234'),
        ('Dmitry', 'Kolesnikov', 'd_kolesnikov@gmail.com', 'password'),
        ('Irina', 'Anishenko', 'i_anishenko@gmail.com', 'password'),
        ('Aleksandr', 'Solomatin', 'a_solomatin@gmail.com', 'password');
+
+INSERT INTO user_roles(user_id, role)
+VALUES (100000, 'ADMIN'),
+       (100000, 'USER'),
+       (100001, 'ADMIN'),
+       (100002, 'USER'),
+       (100003, 'USER'),
+       (100004, 'USER'),
+       (100005, 'USER'),
+       (100006, 'USER');
 
 INSERT INTO restaurants (name)
 VALUES ('Metropol'),

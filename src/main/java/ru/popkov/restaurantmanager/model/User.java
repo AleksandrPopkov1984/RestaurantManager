@@ -1,13 +1,13 @@
 package ru.popkov.restaurantmanager.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import org.springframework.util.CollectionUtils;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -41,10 +41,18 @@ public class User extends AbstractBaseEntity {
     @NotNull
     protected Date registered = new Date();
 
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+    uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "uk_user_roles")})
+    @Column(name = "role")
+    @ElementCollection(fetch = FetchType.EAGER)
+    @JoinColumn
+    private Set<Role> roles;
+
     public User() {
     }
 
-    public User(Integer id, String surname, String name, String email, String password, boolean enabled, Date registered) {
+    public User(Integer id, String surname, String name, String email, String password, boolean enabled, Date registered, Collection<Role> roles) {
         super(id);
         this.surname = surname;
         this.name = name;
@@ -52,10 +60,11 @@ public class User extends AbstractBaseEntity {
         this.password = password;
         this.enabled = enabled;
         this.registered = registered;
+        setRoles(roles);
     }
 
-    public User(Integer id, String surname, String name, String email, String password) {
-        this(id, surname, name, email, password, true, new Date());
+    public User(Integer id, String surname, String name, String email, String password, Role... roles) {
+        this(id, surname, name, email, password, true, new Date(), Arrays.asList(roles));
     }
 
     public String getSurname() {
@@ -104,6 +113,14 @@ public class User extends AbstractBaseEntity {
 
     public void setRegistered(Date registered) {
         this.registered = registered;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
 
     @Override
