@@ -15,10 +15,10 @@ import ru.popkov.restaurantmanager.util.MealsUtil;
 @RequestMapping("/users/meals")
 public class MealController {
 
+    private static final Logger log = LoggerFactory.getLogger(MealController.class);
+
     @Autowired
     private MealRepository mealRepository;
-
-    private static final Logger log = LoggerFactory.getLogger(MealController.class);
 
     @GetMapping
     public String getByRestaurantId(@RequestParam int restaurantId, Model model) {
