@@ -3,17 +3,13 @@ FROM meals;
 DELETE
 FROM restaurants;
 DELETE
-FROM admins;
-DELETE
 FROM users;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
-INSERT INTO admins (surname, name, email, password)
-VALUES ('Igor', 'Vasiljev', 'i_vasiljev@gmail.com', '1234'),
-       ('Andrej', 'Nikolaev', 'a_nikolaev@gmail.com', '4321');
-
 INSERT INTO users (surname, name, email, password)
-VALUES ('Sergej', 'Anisimov', 's_anisimov@gmail.com', 'password'),
+VALUES ('Igor', 'Vasiljev', 'i_vasiljev@gmail.com', '1234'),
+       ('Andrej', 'Nikolaev', 'a_nikolaev@gmail.com', '4321'),
+       ('Sergej', 'Anisimov', 's_anisimov@gmail.com', 'password'),
        ('Olga', 'Borodina', 'o_borodina@gmail.com', 'password'),
        ('Dmitry', 'Kolesnikov', 'd_kolesnikov@gmail.com', 'password'),
        ('Irina', 'Anishenko', 'i_anishenko@gmail.com', 'password'),

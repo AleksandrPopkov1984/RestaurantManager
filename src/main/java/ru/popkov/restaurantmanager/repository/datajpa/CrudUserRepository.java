@@ -5,15 +5,15 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
-import ru.popkov.restaurantmanager.model.RegularUser;
+import ru.popkov.restaurantmanager.model.User;
 
 @Transactional(readOnly = true)
-public interface CrudRegularUserRepository extends JpaRepository<RegularUser, Integer> {
+public interface CrudUserRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM RegularUser ru WHERE ru.id=:id")
+    @Query("DELETE FROM User u WHERE u.id=:id")
     int delete(@Param("id") int id);
 
-    RegularUser getByEmail(String email);
+    User getByEmail(String email);
 }

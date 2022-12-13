@@ -1,22 +1,9 @@
 DROP TABLE IF EXISTS meals;
 DROP TABLE IF EXISTS restaurants;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS admins;
 DROP SEQUENCE IF EXISTS global_seq;
 
 CREATE SEQUENCE global_seq START WITH 100000;
-
-CREATE TABLE admins
-(
-    id         INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    surname    VARCHAR                           NOT NULL,
-    name       VARCHAR                           NOT NULL,
-    email      VARCHAR                           NOT NULL,
-    password   VARCHAR                           NOT NULL,
-    enabled    BOOL                DEFAULT TRUE  NOT NULL,
-    registered TIMESTAMP           DEFAULT now() NOT NULL
-);
-CREATE UNIQUE INDEX admin_unique_email_idx ON admins (email);
 
 CREATE TABLE users
 (

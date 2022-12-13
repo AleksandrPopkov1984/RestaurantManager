@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("users")
-public class RegularUserController {
+public class UserController {
 
     @GetMapping
     public String getRestaurants() {

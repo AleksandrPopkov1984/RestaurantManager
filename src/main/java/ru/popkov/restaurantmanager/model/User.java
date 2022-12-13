@@ -1,15 +1,17 @@
 package ru.popkov.restaurantmanager.model;
 
 import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-@MappedSuperclass
-public abstract class AbstractUser extends AbstractBaseEntity {
+@Entity
+@Table(name = "users")
+public class User extends AbstractBaseEntity {
 
     @Column(name = "surname", nullable = false)
     @NotBlank
@@ -21,7 +23,7 @@ public abstract class AbstractUser extends AbstractBaseEntity {
     @Size(max = 128)
     protected String name;
 
-    @Column(name ="email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
     @Size(max = 128)
@@ -39,10 +41,10 @@ public abstract class AbstractUser extends AbstractBaseEntity {
     @NotNull
     protected Date registered = new Date();
 
-    public AbstractUser() {
+    public User() {
     }
 
-    public AbstractUser(Integer id, String surname, String name, String email, String password, boolean enabled, Date registered) {
+    public User(Integer id, String surname, String name, String email, String password, boolean enabled, Date registered) {
         super(id);
         this.surname = surname;
         this.name = name;
@@ -50,6 +52,10 @@ public abstract class AbstractUser extends AbstractBaseEntity {
         this.password = password;
         this.enabled = enabled;
         this.registered = registered;
+    }
+
+    public User(Integer id, String surname, String name, String email, String password) {
+        this(id, surname, name, email, password, true, new Date());
     }
 
     public String getSurname() {
@@ -102,7 +108,7 @@ public abstract class AbstractUser extends AbstractBaseEntity {
 
     @Override
     public String toString() {
-        return "AbstractUser{" +
+        return "User{" +
                 "id=" + id +
                 ", surname='" + surname + '\'' +
                 ", name='" + name + '\'' +
