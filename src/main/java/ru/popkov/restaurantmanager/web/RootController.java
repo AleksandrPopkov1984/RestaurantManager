@@ -18,7 +18,7 @@ public class RootController {
         return "index";
     }
 
-    @PostMapping("/users")
+    @PostMapping("/start")
     public String redirectToUsers(@RequestParam String userType) {
         log.info("redirect to users");
         return "redirect:" + userType;

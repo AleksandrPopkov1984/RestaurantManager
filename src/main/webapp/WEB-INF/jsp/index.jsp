@@ -6,7 +6,7 @@
 <body>
 <h3>Restaurant management project</h3>
 <hr>
-<form method="post" action="users">
+<form method="post" action="start">
     <b style="font-size: large">User type:&nbsp;</b>
     <select name="userType">
         <option value="admins">Admin</option>
