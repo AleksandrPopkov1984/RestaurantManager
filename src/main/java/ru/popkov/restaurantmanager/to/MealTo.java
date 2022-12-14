@@ -4,22 +4,17 @@ import ru.popkov.restaurantmanager.model.Restaurant;
 
 import java.math.BigDecimal;
 
-public class MealTo {
+public class MealTo extends BaseTo {
 
-    private final Integer id;
     private final String name;
     private final BigDecimal price;
     private final Restaurant restaurant;
 
     public MealTo(Integer id, String name, BigDecimal price, Restaurant restaurant) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.price = price;
         this.restaurant = restaurant;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getName() {

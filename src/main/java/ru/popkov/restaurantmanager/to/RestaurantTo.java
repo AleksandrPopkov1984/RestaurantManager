@@ -1,17 +1,12 @@
 package ru.popkov.restaurantmanager.to;
 
-public class RestaurantTo {
+public class RestaurantTo extends BaseTo {
 
-    private final Integer id;
     private final String name;
 
     public RestaurantTo(Integer id, String name) {
-        this.id = id;
+        super(id);
         this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     public String getName() {

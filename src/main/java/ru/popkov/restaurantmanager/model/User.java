@@ -16,34 +16,34 @@ public class User extends AbstractBaseEntity {
     @Column(name = "surname", nullable = false)
     @NotBlank
     @Size(max = 128)
-    protected String surname;
+    private String surname;
 
     @Column(name = "name", nullable = false)
     @NotBlank
     @Size(max = 128)
-    protected String name;
+    private String name;
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
     @Size(max = 128)
-    protected String email;
+    private String email;
 
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 5, max = 25)
-    protected String password;
+    private String password;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
-    protected boolean enabled = true;
+    private boolean enabled = true;
 
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()", updatable = false)
     @NotNull
-    protected Date registered = new Date();
+    private Date registered = new Date();
 
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-    uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "uk_user_roles")})
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "uk_user_roles")})
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
     @JoinColumn
