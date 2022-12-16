@@ -10,7 +10,7 @@
     <hr/>
     <br/>
 
-    <form method="post" action="users">
+    <form method="get" action="admin/users">
         <button type="submit">Users</button>
         Show list of users
     </form>

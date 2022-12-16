@@ -19,14 +19,8 @@ public class RootController {
     }
 
     @PostMapping("/start")
-    public String redirectToUsers(@RequestParam String userType) {
-        log.info("redirect to users");
-        return "redirect:" + userType;
-    }
-
-    @PostMapping("/admins")
-    public String redirectToAdmins(@RequestParam String userType) {
-        log.info("redirect to admins");
+    public String redirect(@RequestParam String userType) {
+        log.info("redirect to {}", userType);
         return "redirect:" + userType;
     }
 }

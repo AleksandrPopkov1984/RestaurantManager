@@ -34,8 +34,8 @@
                 <td>${user.enabled}</td>
                 <td>${user.registered}</td>
                 <td>${user.roles}</td>
-                <td><a href="${pageContext.request.contextPath}/users/update?id=${user.id}">Update</a></td>
-                <td><a href="${pageContext.request.contextPath}/users/delete?id=${user.id}">Delete</a></td>
+                <td><a href="${pageContext.request.contextPath}/admin/users/update?id=${user.id}">Update</a></td>
+                <td><a href="${pageContext.request.contextPath}/admin/users/delete?id=${user.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

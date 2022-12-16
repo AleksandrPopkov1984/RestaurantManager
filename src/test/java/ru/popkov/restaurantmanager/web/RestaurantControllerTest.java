@@ -15,7 +15,7 @@ public class RestaurantControllerTest extends AbstractControllerTest {
 
     @Test
     void getRestaurants() throws Exception {
-        perform(get("/users/restaurants"))
+        perform(get("/user/restaurants"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("restaurants"))
