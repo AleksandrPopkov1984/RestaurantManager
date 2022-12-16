@@ -9,13 +9,13 @@ FROM users;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (surname, name, email, password)
-VALUES ('Igor', 'Vasiljev', 'i_vasiljev@gmail.com', '1234'),
-       ('Andrej', 'Nikolaev', 'a_nikolaev@gmail.com', '4321'),
-       ('Sergej', 'Anisimov', 's_anisimov@gmail.com', 'password'),
-       ('Olga', 'Borodina', 'o_borodina@gmail.com', 'password'),
-       ('Dmitry', 'Kolesnikov', 'd_kolesnikov@gmail.com', 'password'),
-       ('Irina', 'Anishenko', 'i_anishenko@gmail.com', 'password'),
-       ('Aleksandr', 'Solomatin', 'a_solomatin@gmail.com', 'password');
+VALUES ('Vasiljev', 'Igor', 'i_vasiljev@gmail.com', '1234'),
+       ('Nikolaev', 'Andrej', 'a_nikolaev@gmail.com', '4321'),
+       ('Anisimov', 'Sergej', 's_anisimov@gmail.com', 'password'),
+       ('Borodina', 'Olga', 'o_borodina@gmail.com', 'password'),
+       ('Kolesnikov', 'Dmitry', 'd_kolesnikov@gmail.com', 'password'),
+       ('Anishenko', 'Irina', 'i_anishenko@gmail.com', 'password'),
+       ('Solomatin', 'Aleksandr', 'a_solomatin@gmail.com', 'password');
 
 INSERT INTO user_roles(user_id, role)
 VALUES (100000, 'ADMIN'),
