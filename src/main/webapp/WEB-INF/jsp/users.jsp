@@ -24,12 +24,12 @@
         </tr>
         </thead>
         <c:forEach items="${requestScope.users}" var="user">
-            <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserTo"/>
+            <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserToWithFullData"/>
             <tr>
                 <td>${user.id}</td>
                 <td>${user.surname}</td>
                 <td>${user.name}</td>
-                <td>${user.email}</td>
+                <td><a href="mailto:${user.email}">${user.email}</a></td>
                 <td>${user.password}</td>
                 <td>${user.enabled}</td>
                 <td>${user.registered}</td>

@@ -4,6 +4,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.repository.UserRepository;
+import ru.popkov.restaurantmanager.to.UserTo;
+import ru.popkov.restaurantmanager.util.UsersUtil;
 
 import java.util.List;
 
@@ -27,6 +29,12 @@ public class UserService {
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
         checkNotFoundWithId(repository.save(user), user.id());
+    }
+
+    public void update(UserTo userTo) {
+        User user = get(userTo.id());
+        User updateUser = UsersUtil.updateFromTo(user, userTo);
+        repository.save(updateUser);
     }
 
     public void delete(int id) {

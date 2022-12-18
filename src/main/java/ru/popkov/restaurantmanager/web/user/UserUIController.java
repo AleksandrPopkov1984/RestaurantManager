@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.popkov.restaurantmanager.model.User;
+import ru.popkov.restaurantmanager.to.UserTo;
+import ru.popkov.restaurantmanager.util.UsersUtil;
 
 @Controller
 @RequestMapping(UserUIController.URL)
@@ -23,19 +25,30 @@ public class UserUIController extends AbstractUserController {
         return get(id);
     }
 
-    @PostMapping
-    public User createUser(User user) {
-        return super.create(user);
+    @GetMapping("/create")
+    public String createUser(Model model) {
+        return "userForm";
     }
 
-    @PostMapping("/update")
-    public void updateUser(User user, int id) {
-        super.update(user, id);
+    @GetMapping("/update")
+    public String updateUser(@RequestParam int id, Model model) {
+        model.addAttribute("user", UsersUtil.createTo(super.get(id)));
+        return "userForm";
     }
 
     @GetMapping("/delete")
     public String deleteUser(@RequestParam int id) {
         super.delete(id);
+        return "redirect:/" + URL;
+    }
+
+    @PostMapping
+    public String updateOrCreate(UserTo userTo) {
+        if (userTo.isNew()) {
+            super.create(userTo);
+        } else {
+            super.update(userTo, userTo.getId());
+        }
         return "redirect:/" + URL;
     }
 }

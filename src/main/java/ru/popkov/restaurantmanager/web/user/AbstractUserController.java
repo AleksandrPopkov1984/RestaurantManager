@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.service.UserService;
+import ru.popkov.restaurantmanager.to.UserToWithFullData;
 import ru.popkov.restaurantmanager.to.UserTo;
 import ru.popkov.restaurantmanager.util.UsersUtil;
 
@@ -20,7 +21,7 @@ public abstract class AbstractUserController {
     @Autowired
     private UserService service;
 
-    public List<UserTo> getAll() {
+    public List<UserToWithFullData> getAll() {
         log.info("getAll");
         return UsersUtil.getTos(service.getAll());
     }
@@ -36,10 +37,22 @@ public abstract class AbstractUserController {
         return service.create(user);
     }
 
+    public void create(UserTo userTo) {
+        log.info("create {}", userTo);
+        checkNew(userTo);
+        service.create(UsersUtil.createNewFromTo(userTo));
+    }
+
     public void update(User user, int id) {
         log.info("update {} with id {}", user, id);
         assureIdConsistent(user, id);
         service.update(user);
+    }
+
+    public void update(UserTo userTo, int id) {
+        log.info("update {} with id {}", userTo, id);
+        assureIdConsistent(userTo, id);
+        service.update(userTo);
     }
 
     public void delete(int id) {
