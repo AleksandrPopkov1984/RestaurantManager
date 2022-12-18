@@ -14,8 +14,8 @@ public class UserTestData {
     public static final int NOT_FOUND = 10;
     public static final int USER1_ID = START_SEQ;
 
-    public static final User user1 = new User(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "1234", Role.ADMIN, Role.USER);
-    public static final User user2 = new User(USER1_ID + 1, "Nikolaev", "Andrej", "a_nikolaev@gmail.com", "4321", Role.ADMIN);
+    public static final User user1 = new User(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin", Role.ADMIN, Role.USER);
+    public static final User user2 = new User(USER1_ID + 1, "Nikolaev", "Andrej", "a_nikolaev@gmail.com", "admin", Role.ADMIN);
     public static final User user3 = new User(USER1_ID + 2, "Anisimov", "Sergej", "s_anisimov@gmail.com", "password", Role.USER);
     public static final User user4 = new User(USER1_ID + 3, "Borodina", "Olga", "o_borodina@gmail.com", "password", Role.USER);
     public static final User user5 = new User(USER1_ID + 4, "Kolesnikov", "Dmitry", "d_kolesnikov@gmail.com", "password", Role.USER);
