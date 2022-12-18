@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <title>Users</title>
@@ -35,7 +37,7 @@
                 <td><a href="mailto:${user.email}">${user.email}</a></td>
                 <td>${user.password}</td>
                 <td>${user.enabled}</td>
-                <td>${user.registered}</td>
+                <td><fmt:formatDate value="${user.registered}" pattern="dd-MM-yyyy"/></td>
                 <td>${user.roles}</td>
                 <td><a href="${pageContext.request.contextPath}/admin/users/update?id=${user.id}">Update</a></td>
                 <td><a href="${pageContext.request.contextPath}/admin/users/delete?id=${user.id}">Delete</a></td>
