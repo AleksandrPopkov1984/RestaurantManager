@@ -25,7 +25,7 @@
         </dl>
         <dl>
             <dt>Password</dt>
-            <dd><input type="text" value="${user.password}" name="password" required></dd>
+            <dd><input type="text" value="${user.password}" name="password" title="from 5 to 25 characters" required></dd>
         </dl>
         <dl>
             <dt>Enabled</dt>
