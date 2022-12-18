@@ -1,6 +1,8 @@
 package ru.popkov.restaurantmanager.service;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.repository.UserRepository;
@@ -31,10 +33,10 @@ public class UserService {
         checkNotFoundWithId(repository.save(user), user.id());
     }
 
+    @Transactional
     public void update(UserTo userTo) {
         User user = get(userTo.id());
         User updateUser = UsersUtil.updateFromTo(user, userTo);
-        repository.save(updateUser);
     }
 
     public void delete(int id) {
