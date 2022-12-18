@@ -6,7 +6,7 @@
 <body>
 
 <section>
-    <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserToWithFullData" scope="request"/>
+    <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserTo" scope="request"/>
     <h3>${user.id == null ? 'Add new user' : 'Update user'}</h3>
     <hr/>
     <form method="post" action="${pageContext.request.contextPath}/admin/users">
@@ -29,7 +29,8 @@
         </dl>
         <dl>
             <dt>Enabled</dt>
-            <dd><input type="text" value="${user.enabled}" name="enabled" required></dd>
+            <dd><input type="text" value="${user.enabled}" name="enabled" required>
+            </dd>
         </dl>
         <button type="submit">Save</button>
         <button onclick="window.history.back()" type="button">Cancel</button>

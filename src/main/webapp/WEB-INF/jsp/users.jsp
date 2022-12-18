@@ -8,6 +8,9 @@
 <section>
     <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
+    <a href="${pageContext.request.contextPath}/admin/users/create">Add user</a>
+    <br/>
+    <br/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>

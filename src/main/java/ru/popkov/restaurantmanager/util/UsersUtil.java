@@ -14,13 +14,17 @@ public class UsersUtil {
 
     public static List<UserToWithFullData> getTos(List<User> users) {
         return users.stream()
-                .map(UsersUtil::createTo)
+                .map(UsersUtil::createToFullData)
                 .toList();
     }
 
-    public static UserToWithFullData createTo(User user) {
+    public static UserToWithFullData createToFullData(User user) {
         return new UserToWithFullData(user.getId(), user.getSurname(), user.getName(), user.getEmail(), user.getPassword(), user.isEnabled(),
                 user.getRegistered(), user.getRoles());
+    }
+
+    public static UserTo createTo(User user) {
+        return new UserTo(user.getId(), user.getSurname(), user.getName(), user.getEmail(), user.getPassword(), user.isEnabled());
     }
 
     public static User updateFromTo(User user, UserTo userTo) {

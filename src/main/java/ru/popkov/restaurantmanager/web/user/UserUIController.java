@@ -27,6 +27,7 @@ public class UserUIController extends AbstractUserController {
 
     @GetMapping("/create")
     public String createUser(Model model) {
+        model.addAttribute("user", new UserTo(null, "", "", "", "", true));
         return "userForm";
     }
 
