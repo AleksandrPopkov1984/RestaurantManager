@@ -1,7 +1,9 @@
 package ru.popkov.restaurantmanager.service.datajpa;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.dao.DataAccessException;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.service.AbstractServiceTest;
@@ -17,6 +19,14 @@ public class UserServiceTest extends AbstractServiceTest {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    private CacheManager cacheManager;
+
+    @BeforeEach
+    void setup() {
+        cacheManager.getCache("users").clear();
+    }
 
     @Test
     public void get() {
