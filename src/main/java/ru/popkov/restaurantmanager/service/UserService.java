@@ -61,4 +61,11 @@ public class UserService {
     public List<User> getAll() {
         return repository.getAll();
     }
+
+    @CacheEvict(value = "users", allEntries = true)
+    @Transactional
+    public void enable(int id, boolean enabled) {
+        User user = get(id);
+        user.setEnabled(enabled);
+    }
 }

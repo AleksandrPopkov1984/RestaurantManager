@@ -24,7 +24,7 @@ public class UsersUtil {
     }
 
     public static UserTo createTo(User user) {
-        return new UserTo(user.getId(), user.getSurname(), user.getName(), user.getEmail(), user.getPassword(), user.isEnabled());
+        return new UserTo(user.getId(), user.getSurname(), user.getName(), user.getEmail(), user.getPassword());
     }
 
     public static User updateFromTo(User user, UserTo userTo) {
@@ -32,7 +32,6 @@ public class UsersUtil {
         user.setName(userTo.getName());
         user.setEmail(userTo.getEmail());
         user.setPassword(userTo.getPassword());
-        user.setEnabled(userTo.isEnabled());
         return user;
     }
 

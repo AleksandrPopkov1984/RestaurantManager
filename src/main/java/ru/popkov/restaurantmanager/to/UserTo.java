@@ -22,15 +22,12 @@ public class UserTo extends BaseTo {
     @Size(min = 5, max = 25)
     private final String password;
 
-    private final boolean enabled;
-
-    public UserTo(Integer id, String surname, String name, String email, String password, boolean enabled) {
+    public UserTo(Integer id, String surname, String name, String email, String password) {
         super(id);
         this.surname = surname;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.enabled = enabled;
     }
 
     public String getSurname() {
@@ -47,9 +44,5 @@ public class UserTo extends BaseTo {
 
     public String getPassword() {
         return password;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
     }
 }

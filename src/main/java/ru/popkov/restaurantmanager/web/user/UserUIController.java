@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.popkov.restaurantmanager.to.UserTo;
 import ru.popkov.restaurantmanager.util.UsersUtil;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -22,7 +23,7 @@ public class UserUIController extends AbstractUserController {
 
     @GetMapping("/create")
     public String createUser(Model model) {
-        model.addAttribute("user", new UserTo(null, "", "", "", "", true));
+        model.addAttribute("user", new UserTo(null, "", "", "", ""));
         return "userForm";
     }
 
@@ -45,6 +46,19 @@ public class UserUIController extends AbstractUserController {
         } else {
             super.update(userTo, userTo.getId());
         }
+        return "redirect:/" + URL;
+    }
+
+    @GetMapping("/enable")
+    public String showEnabledForm(@RequestParam int id, Model model) {
+        model.addAttribute("user", UsersUtil.createTo(super.get(id)));
+        return "enabled";
+    }
+
+    @PostMapping("/enabled")
+    public String enableUser(@RequestParam int id, HttpServletRequest request) {
+        boolean enabled = Boolean.parseBoolean(request.getParameter("radio_enabled"));
+        super.enable(id, enabled);
         return "redirect:/" + URL;
     }
 }

@@ -25,11 +25,7 @@
         </dl>
         <dl>
             <dt>Password</dt>
-            <dd><input type="text" value="${user.password}" name="password" title="from 5 to 25 characters" required></dd>
-        </dl>
-        <dl>
-            <dt>Enabled</dt>
-            <dd><input type="text" value="${user.enabled}" name="enabled" required>
+            <dd><input type="text" value="${user.password}" name="password" title="from 5 to 25 characters" required>
             </dd>
         </dl>
         <button type="submit">Save</button>

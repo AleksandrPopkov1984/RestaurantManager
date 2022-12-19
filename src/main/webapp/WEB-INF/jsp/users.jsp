@@ -36,7 +36,8 @@
                 <td>${user.name}</td>
                 <td><a href="mailto:${user.email}">${user.email}</a></td>
                 <td>${user.password}</td>
-                <td>${user.enabled}</td>
+                <td><a href="${pageContext.request.contextPath}/admin/users/enable?id=${user.id}">${user.enabled}</a>
+                </td>
                 <td><fmt:formatDate value="${user.registered}" pattern="dd-MM-yyyy"/></td>
                 <td>${user.roles}</td>
                 <td><a href="${pageContext.request.contextPath}/admin/users/update?id=${user.id}">Update</a></td>
