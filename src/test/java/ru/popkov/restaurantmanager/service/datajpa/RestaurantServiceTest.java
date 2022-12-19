@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.popkov.restaurantmanager.RestaurantTestData.*;
 
-public class DataJpaRestaurantServiceTest extends AbstractServiceTest {
+public class RestaurantServiceTest extends AbstractServiceTest {
 
     @Autowired
     private RestaurantService service;

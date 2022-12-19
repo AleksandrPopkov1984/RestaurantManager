@@ -5,11 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.dao.DataAccessException;
+import ru.popkov.restaurantmanager.model.Role;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.service.AbstractServiceTest;
 import ru.popkov.restaurantmanager.service.UserService;
 import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -77,5 +79,14 @@ public class UserServiceTest extends AbstractServiceTest {
         User updated = getUpdated();
         service.update(updated);
         USER_MATCHER.assertMatch(service.get(USER1_ID), updated);
+    }
+
+    @Test
+    void createWithException() {
+        validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "  ", "Ivan", "ivan@gmail.com", "password", Role.USER)));
+        validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "  ", "ivan@gmail.com", "password", Role.USER)));
+        validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "  ", "ivan@gmail.com", "password", Role.USER)));
+        validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "Ivan", "  ", "password", Role.USER)));
+        validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "Ivan", "ivan@gmail.com", "1234", Role.USER)));
     }
 }

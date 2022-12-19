@@ -14,7 +14,7 @@ import static ru.popkov.restaurantmanager.MealTestData.*;
 import static ru.popkov.restaurantmanager.MealTestData.getUpdated;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
 
-public class DataJpaMealServiceTest extends AbstractServiceTest {
+public class MealServiceTest extends AbstractServiceTest {
 
     @Autowired
     private MealService service;

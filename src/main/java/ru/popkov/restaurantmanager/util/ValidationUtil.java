@@ -1,5 +1,7 @@
 package ru.popkov.restaurantmanager.util;
 
+import org.springframework.core.NestedExceptionUtils;
+import org.springframework.lang.NonNull;
 import ru.popkov.restaurantmanager.HasId;
 import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 
@@ -40,5 +42,11 @@ public class ValidationUtil {
         } else if (bean.id() != id) {
             throw new IllegalArgumentException(bean + " must be with id " + id);
         }
+    }
+
+    @NonNull
+    public static Throwable getRootCause(@NonNull Throwable t) {
+        Throwable rootCause = NestedExceptionUtils.getRootCause(t);
+        return rootCause != null ? rootCause : t;
     }
 }
