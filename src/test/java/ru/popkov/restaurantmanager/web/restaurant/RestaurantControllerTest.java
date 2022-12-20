@@ -1,8 +1,9 @@
-package ru.popkov.restaurantmanager.web;
+package ru.popkov.restaurantmanager.web.restaurant;
 
 import org.assertj.core.matcher.AssertionMatcher;
 import org.junit.jupiter.api.Test;
 import ru.popkov.restaurantmanager.model.Restaurant;
+import ru.popkov.restaurantmanager.web.AbstractControllerTest;
 
 import java.util.List;
 

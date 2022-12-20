@@ -2,6 +2,7 @@ package ru.popkov.restaurantmanager;
 
 import ru.popkov.restaurantmanager.model.Role;
 import ru.popkov.restaurantmanager.model.User;
+import ru.popkov.restaurantmanager.to.UserTo;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 public class UserTestData {
 
     public static final MatcherFactory.Matcher<User> USER_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("registered");
+    public static final MatcherFactory.Matcher<UserTo> USER_TO_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("");
 
     public static final int NOT_FOUND = 10;
     public static final int USER1_ID = START_SEQ;
@@ -23,6 +25,10 @@ public class UserTestData {
     public static final User user7 = new User(USER1_ID + 6, "Solomatin", "Aleksandr", "a_solomatin@gmail.com", "password", Role.USER);
 
     public static final List<User> users = List.of(user1, user2, user3, user4, user5, user6, user7);
+
+    public static final UserTo newUserTo = new UserTo(null, "", "", "", "");
+    public static final UserTo updatedUserTo = new UserTo(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin");
+    public static final UserTo createdUserTo = new UserTo(USER1_ID + 7, "Fedorov", "Petr", "p.fedorov@gmail.com", "password");
 
     public static User getNew() {
         return new User(null, "Sviridov", "Ivan", "i.sviridov@Gmail.com", "password");

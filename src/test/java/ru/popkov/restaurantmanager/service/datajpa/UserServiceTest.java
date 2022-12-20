@@ -14,7 +14,7 @@ import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 import javax.validation.ConstraintViolationException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static ru.popkov.restaurantmanager.UserTestData.*;
 
 public class UserServiceTest extends AbstractServiceTest {
@@ -88,5 +88,13 @@ public class UserServiceTest extends AbstractServiceTest {
         validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "  ", "ivan@gmail.com", "password", Role.USER)));
         validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "Ivan", "  ", "password", Role.USER)));
         validateRootCause(ConstraintViolationException.class, () -> service.create(new User(null, "Ivanov", "Ivan", "ivan@gmail.com", "1234", Role.USER)));
+    }
+
+    @Test
+    void enable() {
+        service.enable(USER1_ID, false);
+        assertFalse(service.get(USER1_ID).isEnabled());
+        service.enable(USER1_ID, true);
+        assertTrue(service.get(USER1_ID).isEnabled());
     }
 }

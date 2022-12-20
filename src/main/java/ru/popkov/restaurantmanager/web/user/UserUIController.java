@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.popkov.restaurantmanager.to.UserTo;
-import ru.popkov.restaurantmanager.util.UsersUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -29,7 +28,7 @@ public class UserUIController extends AbstractUserController {
 
     @GetMapping("/update")
     public String updateUser(@RequestParam int id, Model model) {
-        model.addAttribute("user", UsersUtil.createTo(super.get(id)));
+        model.addAttribute("user", super.get(id));
         return "userForm";
     }
 
@@ -51,7 +50,7 @@ public class UserUIController extends AbstractUserController {
 
     @GetMapping("/enable")
     public String showEnabledForm(@RequestParam int id, Model model) {
-        model.addAttribute("user", UsersUtil.createTo(super.get(id)));
+        model.addAttribute("user", super.get(id));
         return "enabled";
     }
 

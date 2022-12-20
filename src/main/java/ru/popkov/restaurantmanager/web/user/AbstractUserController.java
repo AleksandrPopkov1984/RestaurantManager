@@ -26,9 +26,9 @@ public abstract class AbstractUserController {
         return UsersUtil.getTos(service.getAll());
     }
 
-    public User get(int id) {
+    public UserTo get(int id) {
         log.info("get {}", id);
-        return service.get(id);
+        return UsersUtil.createTo(service.get(id));
     }
 
     public User create(User user) {
