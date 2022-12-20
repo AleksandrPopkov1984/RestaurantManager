@@ -7,6 +7,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.service.UserService;
 import ru.popkov.restaurantmanager.to.UserTo;
+import ru.popkov.restaurantmanager.util.UsersUtil;
 import ru.popkov.restaurantmanager.util.exception.NotFoundException;
 import ru.popkov.restaurantmanager.web.AbstractControllerTest;
 
@@ -69,7 +70,7 @@ public class UserUIControllerTest extends AbstractControllerTest {
                         new AssertionMatcher<UserTo>() {
                             @Override
                             public void assertion(UserTo actual) throws AssertionError {
-                                USER_TO_MATCHER.assertMatch(actual, updatedUserTo);
+                                USER_TO_MATCHER.assertMatch(actual, userTo);
                             }
                         }));
     }
@@ -85,6 +86,23 @@ public class UserUIControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void createOrUpdate() throws Exception {
+        int id = updatedUserTo.getId();
+        perform(post("/" + URL)
+                .param("id", String.valueOf(id))
+                .param("surname", updatedUserTo.getSurname())
+                .param("name", updatedUserTo.getName())
+                .param("email", updatedUserTo.getEmail())
+                .param("password", updatedUserTo.getPassword()))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/admin/users"));
+
+        USER_TO_MATCHER.assertMatch(UsersUtil.createTo(service.get(id)), updatedUserTo);
+    }
+
+
+    @Test
     void showEnabledForm() throws Exception {
         perform(get("/" + URL + "/enable")
                 .param("id", String.valueOf(USER1_ID)))
@@ -96,7 +114,7 @@ public class UserUIControllerTest extends AbstractControllerTest {
                         new AssertionMatcher<UserTo>() {
                             @Override
                             public void assertion(UserTo actual) throws AssertionError {
-                                USER_TO_MATCHER.assertMatch(actual, updatedUserTo);
+                                USER_TO_MATCHER.assertMatch(actual, userTo);
                             }
                         }));
     }

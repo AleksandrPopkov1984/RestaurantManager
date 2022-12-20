@@ -27,8 +27,8 @@ public class UserTestData {
     public static final List<User> users = List.of(user1, user2, user3, user4, user5, user6, user7);
 
     public static final UserTo newUserTo = new UserTo(null, "", "", "", "");
-    public static final UserTo updatedUserTo = new UserTo(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin");
-    public static final UserTo createdUserTo = new UserTo(USER1_ID + 7, "Fedorov", "Petr", "p.fedorov@gmail.com", "password");
+    public static final UserTo userTo = new UserTo(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin");
+    public static final UserTo updatedUserTo = new UserTo(USER1_ID + 6, "Fedorov", "Petr", "p.fedorov@gmail.com", "password");
 
     public static User getNew() {
         return new User(null, "Sviridov", "Ivan", "i.sviridov@Gmail.com", "password");
