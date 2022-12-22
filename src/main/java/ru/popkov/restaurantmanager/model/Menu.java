@@ -24,7 +24,6 @@ public class Menu extends AbstractBaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "menu")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @NotNull
     private List<Meal> meals;
 
     public Menu() {
@@ -63,5 +62,14 @@ public class Menu extends AbstractBaseEntity {
 
     public void setMeals(List<Meal> meals) {
         this.meals = meals;
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "date=" + date +
+                ", restaurant=" + restaurant +
+                ", id=" + id +
+                '}';
     }
 }
