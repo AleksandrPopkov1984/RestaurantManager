@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS meals;
+DROP TABLE IF EXISTS menus;
 DROP TABLE IF EXISTS restaurants;
 DROP TABLE IF EXISTS user_roles;
 DROP TABLE IF EXISTS users;
@@ -21,7 +22,7 @@ CREATE UNIQUE INDEX user_unique_email_idx ON users (email);
 CREATE TABLE user_roles
 (
     user_id INTEGER NOT NULL,
-    role VARCHAR NOT NULL,
+    role    VARCHAR NOT NULL,
     CONSTRAINT user_roles_idx UNIQUE (user_id, role),
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
@@ -32,11 +33,19 @@ CREATE TABLE restaurants
     name VARCHAR NOT NULL
 );
 
-CREATE TABLE meals
+CREATE TABLE menus
 (
     id            INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    name          VARCHAR NOT NULL,
-    price         DECIMAL NOT NULL,
+    date          DATE,
     restaurant_id INTEGER NOT NULL,
     FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE
+);
+
+CREATE TABLE meals
+(
+    id      INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    name    VARCHAR NOT NULL,
+    price   DECIMAL NOT NULL,
+    menu_id INTEGER NOT NULL,
+    FOREIGN KEY (menu_id) REFERENCES menus (id) ON DELETE CASCADE
 );

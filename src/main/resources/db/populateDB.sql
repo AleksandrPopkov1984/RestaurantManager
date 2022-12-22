@@ -1,6 +1,8 @@
 DELETE
 FROM meals;
 DELETE
+FROM menus;
+DELETE
 FROM restaurants;
 DELETE
 FROM user_roles;
@@ -34,14 +36,21 @@ VALUES ('Metropol'),
        ('Karl and Fridrich'),
        ('Russian fishing');
 
-INSERT INTO meals (name, price, restaurant_id)
-VALUES ('Chicken and Bacon', 200, 100007),
-       ('Steak and Onion Ciabatta', 300, 100007),
-       ('Sausage and Onion Sandwich', 250, 100008),
-       ('Lamb & Apricot Curry', 600, 100008),
-       ('Roasted Chicken Legs', 400, 100009),
-       ('Sweet & Sour Pork', 200, 100009),
-       ('Fish Fingers', 310, 100010),
-       ('Mixed Salad', 550, 100010),
-       ('Ginger Sponge Pudding', 480, 100011),
-       ('Baked Beans', 150, 100011);
+INSERT INTO menus(date, restaurant_id)
+VALUES ('2022-12-20', 100007),
+       ('2022-12-20', 100008),
+       ('2022-12-20', 100009),
+       ('2022-12-20', 100010),
+       ('2022-12-20', 100011);
+
+INSERT INTO meals (name, price, menu_id)
+VALUES ('Chicken and Bacon', 200, 100012),
+       ('Steak and Onion Ciabatta', 300, 100012),
+       ('Sausage and Onion Sandwich', 250, 100013),
+       ('Lamb & Apricot Curry', 600, 100013),
+       ('Roasted Chicken Legs', 400, 100014),
+       ('Sweet & Sour Pork', 200, 100014),
+       ('Fish Fingers', 310, 100015),
+       ('Mixed Salad', 550, 100015),
+       ('Ginger Sponge Pudding', 480, 100016),
+       ('Baked Beans', 150, 100016);
