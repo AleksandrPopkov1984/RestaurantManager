@@ -63,4 +63,10 @@ public class MealServiceTest extends AbstractServiceTest {
         service.update(updated, MENU1_ID);
         MEAL_MATCHER.assertMatch(service.get(MEAL1_ID), getUpdated());
     }
+
+    @Test
+    void getOfMenu() {
+        List<Meal> allOfMenu = service.getOfMenu(MENU1_ID + 4);
+        MEAL_MATCHER.assertMatch(allOfMenu, meal9, meal10);
+    }
 }
