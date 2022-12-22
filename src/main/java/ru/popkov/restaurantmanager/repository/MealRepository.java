@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface MealRepository {
 
-    Meal save(Meal meal, int restaurantId);
+    Meal save(Meal meal, int menuId);
 
     boolean delete(int id);
 
@@ -14,5 +14,5 @@ public interface MealRepository {
 
     List<Meal> getAll();
 
-    List<Meal> getOfRestaurant(int restaurantId);
+    List<Meal> getOfMenu(int menuId);
 }

@@ -6,7 +6,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Table(name = "restaurants")
@@ -17,10 +16,9 @@ public class Restaurant extends AbstractBaseEntity {
     @Size(max = 128)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    @OrderBy("name ASC")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Meal> meals;
+    private Menu menu;
 
     public Restaurant() {
     }
@@ -38,12 +36,12 @@ public class Restaurant extends AbstractBaseEntity {
         this.name = name;
     }
 
-    public List<Meal> getMeals() {
-        return meals;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMeals(List<Meal> meals) {
-        this.meals = meals;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     @Override

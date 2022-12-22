@@ -10,16 +10,16 @@ import java.util.List;
 public class DataJpaMealRepository implements MealRepository {
 
     private final CrudMealRepository crudMealRepository;
-    private final CrudRestaurantRepository crudRestaurantRepository;
+    private final CrudMenuRepository crudMenuRepository;
 
-    public DataJpaMealRepository(CrudMealRepository crudMealRepository, CrudRestaurantRepository crudRestaurantRepository) {
+    public DataJpaMealRepository(CrudMealRepository crudMealRepository, CrudMenuRepository crudMenuRepository) {
         this.crudMealRepository = crudMealRepository;
-        this.crudRestaurantRepository = crudRestaurantRepository;
+        this.crudMenuRepository = crudMenuRepository;
     }
 
     @Override
-    public Meal save(Meal meal, int restaurantId) {
-        meal.setRestaurant(crudRestaurantRepository.getReferenceById(restaurantId));
+    public Meal save(Meal meal, int menuId) {
+        meal.setMenu(crudMenuRepository.getReferenceById(menuId));
         return crudMealRepository.save(meal);
     }
 
@@ -39,7 +39,7 @@ public class DataJpaMealRepository implements MealRepository {
     }
 
     @Override
-    public List<Meal> getOfRestaurant(int restaurantId) {
-        return crudMealRepository.getOfRestaurant(restaurantId);
+    public List<Meal> getOfMenu(int menuId) {
+        return crudMealRepository.getOfMenu(menuId);
     }
 }

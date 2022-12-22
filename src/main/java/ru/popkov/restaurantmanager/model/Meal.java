@@ -24,10 +24,10 @@ public class Meal extends AbstractBaseEntity {
     private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id", nullable = false)
+    @JoinColumn(name = "menu_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
-    private Restaurant restaurant;
+    private Menu menu;
 
     public Meal() {
     }
@@ -58,12 +58,12 @@ public class Meal extends AbstractBaseEntity {
         this.price = price;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     @Override

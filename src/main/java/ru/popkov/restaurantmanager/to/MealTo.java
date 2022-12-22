@@ -1,6 +1,6 @@
 package ru.popkov.restaurantmanager.to;
 
-import ru.popkov.restaurantmanager.model.Restaurant;
+import ru.popkov.restaurantmanager.model.Menu;
 
 import java.math.BigDecimal;
 
@@ -8,13 +8,13 @@ public class MealTo extends BaseTo {
 
     private final String name;
     private final BigDecimal price;
-    private final Restaurant restaurant;
+    private final Menu menu;
 
-    public MealTo(Integer id, String name, BigDecimal price, Restaurant restaurant) {
+    public MealTo(Integer id, String name, BigDecimal price, Menu menu) {
         super(id);
         this.name = name;
         this.price = price;
-        this.restaurant = restaurant;
+        this.menu = menu;
     }
 
     public String getName() {
@@ -25,8 +25,8 @@ public class MealTo extends BaseTo {
         return price;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public Menu getMenu() {
+        return menu;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class MealTo extends BaseTo {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", restaurant=" + restaurant +
+                ", menu=" + menu +
                 '}';
     }
 }

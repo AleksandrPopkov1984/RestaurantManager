@@ -23,7 +23,7 @@ public class MealController {
     @GetMapping
     public String getByRestaurantId(@RequestParam int restaurantId, Model model) {
         log.info("get meals for restaurant {}", restaurantId);
-        model.addAttribute("meals", MealsUtil.getTos(mealRepository.getOfRestaurant(restaurantId)));
+        model.addAttribute("meals", MealsUtil.getTos(mealRepository.getOfMenu(restaurantId)));
         return "meals";
     }
 }

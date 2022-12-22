@@ -17,6 +17,6 @@ public class MealsUtil {
     }
 
     public static MealTo createTo(Meal meal) {
-        return new MealTo(meal.getId(), meal.getName(), meal.getPrice(), meal.getRestaurant());
+        return new MealTo(meal.getId(), meal.getName(), meal.getPrice(), meal.getMenu());
     }
 }

@@ -18,14 +18,14 @@ public class MealService {
         this.repository = repository;
     }
 
-    public Meal create(Meal meal, int restaurantId) {
+    public Meal create(Meal meal, int menuId) {
         Assert.notNull(meal, "meal must not be null");
-        return repository.save(meal, restaurantId);
+        return repository.save(meal, menuId);
     }
 
-    public void update(Meal meal, int restaurantId) {
+    public void update(Meal meal, int menuId) {
         Assert.notNull(meal, "meal must not be null");
-        checkNotFoundWithId(repository.save(meal, restaurantId), meal.id());
+        checkNotFoundWithId(repository.save(meal, menuId), meal.id());
     }
 
     public void delete(int id) {
