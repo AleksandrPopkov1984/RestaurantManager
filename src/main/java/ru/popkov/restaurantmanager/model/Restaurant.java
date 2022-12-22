@@ -1,5 +1,6 @@
 package ru.popkov.restaurantmanager.model;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -17,7 +18,10 @@ public class Restaurant extends AbstractBaseEntity {
     private String name;
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "restaurant")
+    @BatchSize(size = 200)
+    @JoinColumn(nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+
     private Menu menu;
 
     public Restaurant() {

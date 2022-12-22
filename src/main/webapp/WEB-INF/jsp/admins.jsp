@@ -20,7 +20,7 @@
         Show list of menus
     </form>
     <br/>
-    <form method="post" action="restaurants">
+    <form method="get" action="admin/restaurants">
         <button type="submit">Restaurants</button>
         Show list of restaurants
     </form>
