@@ -16,7 +16,7 @@ public class Restaurant extends AbstractBaseEntity {
     @Size(max = 128)
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "restaurant")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Menu menu;
 

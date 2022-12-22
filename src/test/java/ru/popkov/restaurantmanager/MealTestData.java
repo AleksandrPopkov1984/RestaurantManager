@@ -9,10 +9,10 @@ import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 
 public class MealTestData {
 
-    public static final MatcherFactory.Matcher<Meal> MEAL_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant");
+    public static final MatcherFactory.Matcher<Meal> MEAL_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("menu");
 
     public static final int NOT_FOUND = 10;
-    public static final int MEAL1_ID = START_SEQ + 12;
+    public static final int MEAL1_ID = START_SEQ + 17;
 
     public static final Meal meal1 = new Meal(MEAL1_ID, "Chicken and Bacon", BigDecimal.valueOf(200));
     public static final Meal meal2 = new Meal(MEAL1_ID + 1, "Steak and Onion Ciabatta", BigDecimal.valueOf(300));

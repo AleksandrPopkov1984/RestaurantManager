@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.popkov.restaurantmanager.MealTestData.*;
 import static ru.popkov.restaurantmanager.MealTestData.getUpdated;
-import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
+import static ru.popkov.restaurantmanager.MenuTestData.MENU1_ID;
 
 public class MealServiceTest extends AbstractServiceTest {
 
@@ -49,7 +49,7 @@ public class MealServiceTest extends AbstractServiceTest {
 
     @Test
     void create() {
-        Meal created = service.create(getNew(), RESTAURANT1_ID);
+        Meal created = service.create(getNew(), MENU1_ID);
         int newId = created.id();
         Meal newMeal = getNew();
         newMeal.setId(newId);
@@ -60,7 +60,7 @@ public class MealServiceTest extends AbstractServiceTest {
     @Test
     void update() {
         Meal updated = getUpdated();
-        service.update(updated, RESTAURANT1_ID);
+        service.update(updated, MENU1_ID);
         MEAL_MATCHER.assertMatch(service.get(MEAL1_ID), getUpdated());
     }
 }

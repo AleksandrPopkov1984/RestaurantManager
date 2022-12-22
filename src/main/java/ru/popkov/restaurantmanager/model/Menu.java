@@ -37,6 +37,10 @@ public class Menu extends AbstractBaseEntity {
         this.meals = meals;
     }
 
+    public Menu(Integer id, LocalDate date, Restaurant restaurant) {
+        this(id, date, restaurant, null);
+    }
+
     public LocalDate getDate() {
         return date;
     }
