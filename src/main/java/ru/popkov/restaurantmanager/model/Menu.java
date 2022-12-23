@@ -16,7 +16,7 @@ public class Menu extends AbstractBaseEntity {
     @NotNull
     private LocalDate date;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @NotNull
