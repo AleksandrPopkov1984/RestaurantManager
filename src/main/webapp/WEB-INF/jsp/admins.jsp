@@ -15,11 +15,6 @@
         Show list of users
     </form>
     <br/>
-    <form method="post" action="menus">
-        <button type="submit">Menus</button>
-        Show list of menus
-    </form>
-    <br/>
     <form method="get" action="admin/restaurants">
         <button type="submit">Restaurants</button>
         Show list of restaurants
