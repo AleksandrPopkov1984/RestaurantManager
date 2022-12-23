@@ -17,7 +17,6 @@
             <th>Date</th>
             <th>Restaurant</th>
             <th></th>
-            <th></th>
         </tr>
         </thead>
         <c:forEach items="${requestScope.menus}" var="menu">

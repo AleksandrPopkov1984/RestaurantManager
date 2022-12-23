@@ -3,7 +3,6 @@ package ru.popkov.restaurantmanager.to;
 import ru.popkov.restaurantmanager.model.Menu;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -12,23 +11,18 @@ public class MealTo extends BaseTo {
 
     @NotBlank
     @Size(max = 128)
-    private final String name;
+    private String name;
 
     @Positive
-    private final BigDecimal price;
+    private BigDecimal price;
 
-    @NotNull
-    private final Menu menu;
+    private Menu menu;
 
     public MealTo(Integer id, String name, BigDecimal price, Menu menu) {
         super(id);
         this.name = name;
         this.price = price;
         this.menu = menu;
-    }
-
-    public MealTo(Integer id, String name, BigDecimal price) {
-        this(id, name, price, null);
     }
 
     public String getName() {
@@ -41,6 +35,18 @@ public class MealTo extends BaseTo {
 
     public Menu getMenu() {
         return menu;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     @Override
