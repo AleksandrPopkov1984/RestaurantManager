@@ -14,7 +14,6 @@
         <tr>
             <th>Name</th>
             <th>Price</th>
-            <th>Restaurant</th>
         </tr>
         </thead>
         <c:forEach items="${requestScope.meals}" var="meal">
@@ -22,7 +21,6 @@
             <tr>
                 <td>${meal.name}</td>
                 <td>${meal.price}</td>
-                <td>${meal.restaurant.name}</td>
             </tr>
         </c:forEach>
     </table>

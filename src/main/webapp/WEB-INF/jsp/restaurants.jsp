@@ -9,12 +9,12 @@
 <section>
     <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
-    <h4>Status:</h4>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th></th>
             <th></th>
             <th></th>
         </tr>
@@ -26,7 +26,8 @@
                 <td>${restaurant.name}</td>
                 <td><a href="users/meals?restaurantId=${restaurant.id}">Open Meals</a></td>
                 <td><a href="${pageContext.request.contextPath}/users/vote?id=${restaurant.id}">Vote</a></td>
-                <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus?restaurantId=${restaurant.id}">Open menus</a></td>
+                <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus?restaurantId=${restaurant.id}">Open
+                    menus</a></td>
             </tr>
         </c:forEach>
     </table>
