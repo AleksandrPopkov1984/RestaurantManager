@@ -39,7 +39,7 @@ public class DataJpaMenuRepository implements MenuRepository {
     }
 
     @Override
-    public Menu getOfRestaurant(int restaurantId) {
+    public List<Menu> getOfRestaurant(int restaurantId) {
         return crudMenuRepository.getOfRestaurant(restaurantId);
     }
 }

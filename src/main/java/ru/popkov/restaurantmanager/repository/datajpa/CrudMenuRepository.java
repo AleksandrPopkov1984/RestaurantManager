@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 import ru.popkov.restaurantmanager.model.Menu;
 
+import java.util.List;
+
 @Transactional(readOnly = true)
 public interface CrudMenuRepository extends JpaRepository<Menu, Integer> {
 
@@ -16,5 +18,5 @@ public interface CrudMenuRepository extends JpaRepository<Menu, Integer> {
     int delete(@Param("id") int id);
 
     @Query("SELECT m FROM Menu m JOIN FETCH m.restaurant WHERE m.restaurant.id=:restaurantId")
-    Menu getOfRestaurant(@Param("restaurantId") int restaurantId);
+    List<Menu> getOfRestaurant(@Param("restaurantId") int restaurantId);
 }
