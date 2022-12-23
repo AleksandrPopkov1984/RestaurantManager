@@ -26,12 +26,13 @@
                 <td>${menu.id}</td>
                 <td>${menu.date}</td>
                 <td>${menu.restaurant.name}</td>
-                <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu?menuId=${menu.id}">Show meals</a></td>
+                <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu?menuId=${menu.id}">Show
+                    meals</a></td>
             </tr>
         </c:forEach>
     </table>
-
-
+    <br>
+    <button onclick="window.history.back()" type="button">Ok</button>
 </section>
 </body>
 </html>
