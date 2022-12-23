@@ -62,4 +62,10 @@ public class MenuServiceTest extends AbstractServiceTest {
         service.update(updated, RESTAURANT1_ID + 4);
         MENU_MATCHER.assertMatch(service.get(MENU1_ID), updated);
     }
+
+    @Test
+    void getOfRestaurant() {
+        List<Menu> allAfRestaurant = service.getOfRestaurant(RESTAURANT1_ID);
+        MENU_MATCHER.assertMatch(allAfRestaurant, menu1);
+    }
 }

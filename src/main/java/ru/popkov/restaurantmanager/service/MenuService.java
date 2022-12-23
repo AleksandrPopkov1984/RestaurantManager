@@ -39,4 +39,8 @@ public class MenuService {
     public List<Menu> getAll() {
         return repository.getAll();
     }
+
+    public List<Menu> getOfRestaurant(int restaurantId) {
+        return repository.getOfRestaurant(restaurantId);
+    }
 }
