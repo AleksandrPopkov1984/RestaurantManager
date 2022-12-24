@@ -1,15 +1,18 @@
 package ru.popkov.restaurantmanager;
 
 import ru.popkov.restaurantmanager.model.Meal;
+import ru.popkov.restaurantmanager.to.MealTo;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+import static ru.popkov.restaurantmanager.MenuTestData.menu1;
 import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 
 public class MealTestData {
 
     public static final MatcherFactory.Matcher<Meal> MEAL_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("menu");
+    public static final MatcherFactory.Matcher<MealTo> MEAL_TO_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("menu");
 
     public static final int NOT_FOUND = 10;
     public static final int MEAL1_ID = START_SEQ + 17;
@@ -26,6 +29,10 @@ public class MealTestData {
     public static final Meal meal10 = new Meal(MEAL1_ID + 9, "Baked Beans", BigDecimal.valueOf(150));
 
     public static final List<Meal> meals = List.of(meal1, meal2, meal3, meal4, meal5, meal6, meal7, meal8, meal9, meal10);
+
+    public static final MealTo mealTo = new MealTo(MEAL1_ID, "Chicken and Bacon", BigDecimal.valueOf(200), null);
+    public static final MealTo newMealTo = new MealTo(null, "", BigDecimal.valueOf(100), null);
+    public static final MealTo updatedMealTo = new MealTo(MEAL1_ID, "Chicken and Bacon", BigDecimal.valueOf(388), menu1);
 
     public static Meal getNew() {
         return new Meal(null, "Fish soup", BigDecimal.valueOf(500));

@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.popkov.restaurantmanager.RestaurantTestData.*;
 
-public class RestaurantControllerTest extends AbstractControllerTest {
+public class RestaurantUIControllerTest extends AbstractControllerTest {
 
     @Test
     void getRestaurants() throws Exception {
