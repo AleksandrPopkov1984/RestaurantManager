@@ -9,11 +9,16 @@
 <section>
     <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
+    <a href="${pageContext.request.contextPath}/admin/restaurants/create">Add restaurant</a>
+    <br/>
+    <br/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th></th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
@@ -28,6 +33,12 @@
                 <td><a href="${pageContext.request.contextPath}/users/vote?id=${restaurant.id}">Vote</a></td>
                 <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus?restaurantId=${restaurant.id}">Open
                     menus</a></td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/admin/restaurants/update?id=${restaurant.id}">Update</a>
+                </td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/admin/restaurants/delete?id=${restaurant.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>

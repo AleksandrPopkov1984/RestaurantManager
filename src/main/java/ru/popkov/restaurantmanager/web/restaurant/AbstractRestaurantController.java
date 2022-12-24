@@ -25,9 +25,9 @@ public abstract class AbstractRestaurantController {
         return RestaurantsUtil.getTos(service.getAll());
     }
 
-    public Restaurant get(int id) {
+    public RestaurantTo get(int id) {
         log.info("get {}", id);
-        return service.get(id);
+        return RestaurantsUtil.createTo(service.get(id));
     }
 
     public Restaurant create(Restaurant restaurant) {
@@ -36,10 +36,22 @@ public abstract class AbstractRestaurantController {
         return service.create(restaurant);
     }
 
+    public void create(RestaurantTo restaurantTo) {
+        log.info("create {}", restaurantTo);
+        checkNew(restaurantTo);
+        service.create(RestaurantsUtil.createNewFromTo(restaurantTo));
+    }
+
     public void update(Restaurant restaurant, int id) {
         log.info("update {} with id {}", restaurant, id);
         assureIdConsistent(restaurant, id);
         service.update(restaurant);
+    }
+
+    public void update(RestaurantTo restaurantTo, int id) {
+        log.info("update {} with id {}", restaurantTo, id);
+        assureIdConsistent(restaurantTo, id);
+        service.update(restaurantTo);
     }
 
     public void delete(int id) {
