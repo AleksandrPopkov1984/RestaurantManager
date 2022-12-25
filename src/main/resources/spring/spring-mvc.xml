@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <context:component-scan base-package="ru.popkov.**.web"/>
 
@@ -15,6 +15,14 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>
+
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
+        <property name="formatters">
+            <set>
+                <bean class="ru.popkov.restaurantmanager.web.formatter.DateTimeFormatters.LocalDateFormatter"/>
+            </set>
+        </property>
+    </bean>
 
     <!--
         <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
@@ -27,11 +35,11 @@
             </property>
         </bean>
     -->
-<!--    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"-->
-<!--          p:cacheSeconds="5"-->
-<!--          p:defaultEncoding="UTF-8">-->
-<!--        <property name="basenames" value="file:///#{systemEnvironment[TOPJAVA_ROOT]}/config/messages/app"/>-->
-<!--        <property name="fallbackToSystemLocale" value="false"/>-->
-<!--    </bean>-->
+    <!--    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"-->
+    <!--          p:cacheSeconds="5"-->
+    <!--          p:defaultEncoding="UTF-8">-->
+    <!--        <property name="basenames" value="file:///#{systemEnvironment[TOPJAVA_ROOT]}/config/messages/app"/>-->
+    <!--        <property name="fallbackToSystemLocale" value="false"/>-->
+    <!--    </bean>-->
 
 </beans>
