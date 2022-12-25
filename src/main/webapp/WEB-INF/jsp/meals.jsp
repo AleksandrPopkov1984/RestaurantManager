@@ -41,7 +41,8 @@
         </c:forEach>
     </table>
     <br>
-    <form method="get" action="${pageContext.request.contextPath}/admin/restaurants">
+    <form method="get" action="${pageContext.request.contextPath}/admin/restaurants/menus">
+        <input type="hidden" name="restaurantId" id="restaurantId" value="${restaurantId}"/>
         <button type="submit">Ok</button>
     </form>
 </section>

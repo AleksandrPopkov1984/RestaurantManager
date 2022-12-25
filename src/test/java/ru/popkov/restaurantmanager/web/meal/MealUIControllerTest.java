@@ -13,14 +13,14 @@ import ru.popkov.restaurantmanager.web.AbstractControllerTest;
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.popkov.restaurantmanager.MealTestData.*;
 import static ru.popkov.restaurantmanager.MenuTestData.MENU1_ID;
+import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
 import static ru.popkov.restaurantmanager.web.meal.MealAdminUIController.URL;
 
 public class MealUIControllerTest extends AbstractControllerTest {
@@ -41,6 +41,13 @@ public class MealUIControllerTest extends AbstractControllerTest {
                             @Override
                             public void assertion(List<Meal> actual) throws AssertionError {
                                 MEAL_MATCHER.assertMatch(actual, meal1, meal2);
+                            }
+                        }))
+                .andExpect(model().attribute("restaurantId",
+                        new AssertionMatcher<Integer>() {
+                            @Override
+                            public void assertion(Integer actual) throws AssertionError {
+                                assertEquals(actual, RESTAURANT1_ID);
                             }
                         }));
     }

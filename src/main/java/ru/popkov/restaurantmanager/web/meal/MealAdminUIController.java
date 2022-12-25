@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.popkov.restaurantmanager.model.Menu;
+import ru.popkov.restaurantmanager.model.Restaurant;
 import ru.popkov.restaurantmanager.to.MealTo;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ public class MealAdminUIController extends AbstractMealController {
     @GetMapping
     public String getOfMenu(@RequestParam int menuId, Model model) {
         model.addAttribute("meals", super.getOfMenu(menuId));
+        Restaurant restaurant = super.getRestaurant(menuId);
+        model.addAttribute("restaurantId", restaurant.id());
         return "meals";
     }
 

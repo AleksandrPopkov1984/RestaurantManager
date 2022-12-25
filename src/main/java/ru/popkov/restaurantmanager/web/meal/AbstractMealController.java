@@ -5,8 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.popkov.restaurantmanager.model.Meal;
 import ru.popkov.restaurantmanager.model.Menu;
+import ru.popkov.restaurantmanager.model.Restaurant;
 import ru.popkov.restaurantmanager.service.MealService;
 import ru.popkov.restaurantmanager.service.MenuService;
+import ru.popkov.restaurantmanager.service.RestaurantService;
 import ru.popkov.restaurantmanager.to.MealTo;
 import ru.popkov.restaurantmanager.util.MealsUtil;
 
@@ -24,6 +26,9 @@ public class AbstractMealController {
 
     @Autowired
     private MenuService menuService;
+
+    @Autowired
+    private RestaurantService restaurantService;
 
     public List<MealTo> getOfMenu(int menuId) {
         log.info("get of menu with id {}", menuId);
@@ -72,5 +77,10 @@ public class AbstractMealController {
             Meal meal = new Meal(null, "default meal", BigDecimal.valueOf(100));
             mealService.create(meal, menuId);
         }
+    }
+
+    public Restaurant getRestaurant(int menuId) {
+        Menu menu = menuService.get(menuId);
+        return restaurantService.get(menu.getRestaurant().getId());
     }
 }
