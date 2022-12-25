@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS votes;
 DROP TABLE IF EXISTS meals;
 DROP TABLE IF EXISTS menus;
 DROP TABLE IF EXISTS restaurants;
@@ -36,7 +37,7 @@ CREATE TABLE restaurants
 CREATE TABLE menus
 (
     id            INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    date          DATE,
+    date          DATE    NOT NULL,
     restaurant_id INTEGER NOT NULL,
     FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE
 );
@@ -48,4 +49,14 @@ CREATE TABLE meals
     price   DECIMAL NOT NULL,
     menu_id INTEGER NOT NULL,
     FOREIGN KEY (menu_id) REFERENCES menus (id) ON DELETE CASCADE
+);
+
+CREATE TABLE votes
+(
+    id            INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    user_id       INTEGER   NOT NULL,
+    restaurant_id INTEGER   NOT NULL,
+    date_time     TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants (id) ON DELETE CASCADE
 );
