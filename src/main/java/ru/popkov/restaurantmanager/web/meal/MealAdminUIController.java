@@ -33,6 +33,7 @@ public class MealAdminUIController extends AbstractMealController {
     @GetMapping("/delete")
     public String deleteMeal(@RequestParam int id, @RequestParam int menuId) {
         super.delete(id);
+        super.addDefaultMealIfNecessary(menuId);
         return "redirect:" + URL + "?menuId=" + menuId;
     }
 

@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -64,12 +65,18 @@ public class MealUIControllerTest extends AbstractControllerTest {
     @Test
     void delete() throws Exception {
         perform(get(URL + "/delete")
-                .param("id", String.valueOf(MEAL1_ID + 1))
+                .param("id", String.valueOf(MEAL1_ID))
                 .param("menuId", String.valueOf(MENU1_ID)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 
-        assertThrows(NotFoundException.class, () -> service.get(MEAL1_ID + 1));
+        assertThrows(NotFoundException.class, () -> service.get(MEAL1_ID));
+
+        perform(get(URL + "/delete")
+                .param("id", String.valueOf(MEAL1_ID + 1))
+                .param("menuId", String.valueOf(MENU1_ID)));
+        List<Meal> mealList = service.getOfMenu(MENU1_ID);
+        assertTrue(mealList.size() == 1);
     }
 
     @Test

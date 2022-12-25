@@ -10,6 +10,7 @@ import ru.popkov.restaurantmanager.service.MenuService;
 import ru.popkov.restaurantmanager.to.MealTo;
 import ru.popkov.restaurantmanager.util.MealsUtil;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static ru.popkov.restaurantmanager.util.ValidationUtil.checkNew;
@@ -63,5 +64,13 @@ public class AbstractMealController {
 
     public Menu getMenu(int menuId) {
         return menuService.get(menuId);
+    }
+
+    public void addDefaultMealIfNecessary(int menuId) {
+        List<Meal> meals = mealService.getOfMenu(menuId);
+        if (meals.isEmpty()) {
+            Meal meal = new Meal(null, "default meal", BigDecimal.valueOf(100));
+            mealService.create(meal, menuId);
+        }
     }
 }

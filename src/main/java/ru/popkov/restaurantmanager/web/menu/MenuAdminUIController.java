@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.popkov.restaurantmanager.model.Menu;
 import ru.popkov.restaurantmanager.model.Restaurant;
 import ru.popkov.restaurantmanager.to.MenuTo;
 
@@ -38,11 +39,12 @@ public class MenuAdminUIController extends AbstractMenuController {
     }
 
     @PostMapping
-    public String updateOrCreate(@Valid MenuTo menuTo, @RequestParam int restaurantId) {
+    public String createMenu(@Valid MenuTo menuTo, @RequestParam int restaurantId) {
         Restaurant restaurant = super.getRestaurant(restaurantId);
         menuTo.setRestaurant(restaurant);
         if (menuTo.isNew()) {
-            super.create(menuTo, restaurantId);
+            Menu menu = super.create(menuTo, restaurantId);
+            super.createNewMeal(menu.id());
         }
         return "redirect:" + URL + "?restaurantId=" + restaurantId;
     }
