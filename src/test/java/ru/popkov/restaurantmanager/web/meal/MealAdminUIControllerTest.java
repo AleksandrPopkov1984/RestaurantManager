@@ -23,7 +23,7 @@ import static ru.popkov.restaurantmanager.MenuTestData.MENU1_ID;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
 import static ru.popkov.restaurantmanager.web.meal.MealAdminUIController.URL;
 
-public class MealUIControllerTest extends AbstractControllerTest {
+public class MealAdminUIControllerTest extends AbstractControllerTest {
 
     @Autowired
     private MealService service;
