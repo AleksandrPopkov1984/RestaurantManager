@@ -22,6 +22,7 @@ public class MenuAdminUIController extends AbstractMenuController {
     @GetMapping
     public String getOfRestaurant(@RequestParam int restaurantId, Model model) {
         model.addAttribute("menus", super.getOfRestaurant(restaurantId));
+        model.addAttribute("restaurantId", restaurantId);
         return "menus";
     }
 
