@@ -19,4 +19,8 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
 
     @Query("SELECT m FROM Meal m JOIN FETCH m.menu WHERE m.menu.id=:menuId ORDER BY m.id")
     List<Meal> getOfMenu(@Param("menuId") int menuId);
+
+    @Query(value = "SELECT * FROM meals m JOIN menus mu ON m.menu_id = mu.id JOIN restaurants r ON mu.restaurant_id = r.id " +
+            "WHERE r.id = :restaurantId AND date = (SELECT MAX(date) FROM menus)", nativeQuery = true)
+    List<Meal> getOfRestaurant(@Param("restaurantId") int restaurantId);
 }

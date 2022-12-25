@@ -83,4 +83,8 @@ public class AbstractMealController {
         Menu menu = menuService.get(menuId);
         return restaurantService.get(menu.getRestaurant().getId());
     }
+
+    public List<MealTo> getActualMenuOfRestaurant(int restaurantId) {
+        return MealsUtil.getTos(mealService.getOfRestaurant(restaurantId));
+    }
 }

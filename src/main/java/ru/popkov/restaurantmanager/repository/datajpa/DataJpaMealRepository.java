@@ -42,4 +42,9 @@ public class DataJpaMealRepository implements MealRepository {
     public List<Meal> getOfMenu(int menuId) {
         return crudMealRepository.getOfMenu(menuId);
     }
+
+    @Override
+    public List<Meal> getOfRestaurant(int restaurantId) {
+        return crudMealRepository.getOfRestaurant(restaurantId);
+    }
 }

@@ -45,6 +45,9 @@
         <input type="hidden" name="restaurantId" id="restaurantId" value="${restaurantId}"/>
         <button type="submit">Ok</button>
     </form>
+    <form method="get" action="${pageContext.request.contextPath}/user/restaurants/">
+        <button type="submit">Ok</button>
+    </form>
 </section>
 </body>
 </html>
