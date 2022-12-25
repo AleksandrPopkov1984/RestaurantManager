@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private static final Logger log = LoggerFactory.getLogger(MealController.class);
+    private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 
     @GetMapping
     public String getAdminPage() {
