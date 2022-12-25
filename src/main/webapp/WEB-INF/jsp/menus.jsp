@@ -10,12 +10,19 @@
 <section>
     <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
+    <c:forEach items="${requestScope.menus}" var="menu" end="0">
+        <a href="${pageContext.request.contextPath}/admin/restaurants/menus/create?restaurantId=${menu.restaurant.id}">Add
+            menu</a>
+    </c:forEach>
+    <br/>
+    <br/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
             <th>Id</th>
             <th>Date</th>
             <th>Restaurant</th>
+            <th></th>
             <th></th>
         </tr>
         </thead>
@@ -27,11 +34,16 @@
                 <td>${menu.restaurant.name}</td>
                 <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu?menuId=${menu.id}">Show
                     meals</a></td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/admin/restaurants/menus/delete?restaurantId=${menu.restaurant.id}&id=${menu.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
     <br>
-    <button onclick="window.history.back()" type="button">Ok</button>
+    <form method="get" action="${pageContext.request.contextPath}/admin/restaurants">
+        <button type="submit">Ok</button>
+    </form>
 </section>
 </body>
 </html>

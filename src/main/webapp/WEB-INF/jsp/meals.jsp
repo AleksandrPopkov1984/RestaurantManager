@@ -10,7 +10,8 @@
     <hr/>
     <br>
     <c:forEach items="${requestScope.meals}" var="meal" end="0">
-        <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add meal</a>
+        <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add
+            meal</a>
     </c:forEach>
     <br/>
     <br/>
@@ -30,13 +31,19 @@
                 <td>${meal.id}</td>
                 <td>${meal.name}</td>
                 <td>${meal.price}</td>
-                <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/update?menuId=${meal.menu.id}&id=${meal.id}">Update</a></td>
-                <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/delete?menuId=${meal.menu.id}&id=${meal.id}">Delete</a></td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/update?menuId=${meal.menu.id}&id=${meal.id}">Update</a>
+                </td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/delete?menuId=${meal.menu.id}&id=${meal.id}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
     </table>
     <br>
-    <button onclick="window.history.back()" type="button">Ok</button>
+    <form method="get" action="${pageContext.request.contextPath}/admin/restaurants">
+        <button type="submit">Ok</button>
+    </form>
 </section>
 </body>
 </html>

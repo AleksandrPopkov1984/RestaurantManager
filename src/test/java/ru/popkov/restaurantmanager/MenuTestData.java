@@ -1,7 +1,11 @@
 package ru.popkov.restaurantmanager;
 
+import ru.popkov.restaurantmanager.model.Meal;
 import ru.popkov.restaurantmanager.model.Menu;
+import ru.popkov.restaurantmanager.to.MenuTo;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
@@ -16,6 +20,7 @@ import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 public class MenuTestData {
 
     public static final MatcherFactory.Matcher<Menu> MENU_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant", "meals");
+    public static final MatcherFactory.Matcher<MenuTo> MENU_TO_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant", "meals");
 
     public static final int NOT_FOUND = 10;
     public static final int MENU1_ID = START_SEQ + 12;
@@ -27,6 +32,9 @@ public class MenuTestData {
     public static final Menu menu5 = new Menu(MENU1_ID + 4, of(2022, Month.DECEMBER, 20), restaurant5);
 
     public static final List<Menu> menus = List.of(menu1, menu2, menu3, menu4, menu5);
+
+    public static final MenuTo newMenuTo = new MenuTo(null, LocalDate.now(), restaurant1,
+            List.of(new Meal(null, "dafault meal", BigDecimal.valueOf(100))));
 
     public static Menu getNew() {
         return new Menu(null, of(2022, Month.DECEMBER, 22), restaurant2);

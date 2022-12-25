@@ -10,12 +10,11 @@ import java.util.List;
 public class MenuTo extends BaseTo {
 
     @NotNull
-    private final LocalDate date;
+    private LocalDate date;
 
-    @NotNull
-    private final Restaurant restaurant;
+    private Restaurant restaurant;
 
-    private final List<Meal> meals;
+    private List<Meal> meals;
 
     public MenuTo(Integer id, LocalDate date, Restaurant restaurant, List<Meal> meals) {
         super(id);
@@ -28,11 +27,31 @@ public class MenuTo extends BaseTo {
         return date;
     }
 
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
 
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
     public List<Meal> getMeals() {
         return meals;
+    }
+
+    public void setMeals(List<Meal> meals) {
+        this.meals = meals;
+    }
+
+    @Override
+    public String toString() {
+        return "MenuTo{" +
+                "date=" + date +
+                ", id=" + id +
+                '}';
     }
 }
