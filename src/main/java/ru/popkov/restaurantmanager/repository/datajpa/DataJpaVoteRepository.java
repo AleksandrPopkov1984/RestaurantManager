@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import ru.popkov.restaurantmanager.model.Vote;
 import ru.popkov.restaurantmanager.repository.VoteRepository;
 
+import java.time.LocalDate;
+
 @Repository
 public class DataJpaVoteRepository implements VoteRepository {
 
@@ -24,7 +26,12 @@ public class DataJpaVoteRepository implements VoteRepository {
     }
 
     @Override
+    public Vote getOfUserAndDate(int userId, LocalDate date) {
+        return crudVoteRepository.getOfUserAndDate(userId, date);
+    }
+
+    @Override
     public int getCountOfRestaurant(int restaurantId) {
-        return 0;
+        return crudVoteRepository.getCountOfRestaurant(restaurantId);
     }
 }

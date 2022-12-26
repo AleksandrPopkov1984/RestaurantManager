@@ -31,7 +31,7 @@
                 <td>${restaurant.name}</td>
                 <td><a href="${pageContext.request.contextPath}/user/meals?restaurantId=${restaurant.id}">Open Meals</a>
                 </td>
-                <td><a href="${pageContext.request.contextPath}/user/vote?id=${restaurant.id}">Vote</a></td>
+                <td><a href="${pageContext.request.contextPath}/user/vote?restaurantId=${restaurant.id}">Vote</a></td>
                 <td><a href="${pageContext.request.contextPath}/admin/restaurants/menus?restaurantId=${restaurant.id}">Open
                     menus</a></td>
                 <td>
