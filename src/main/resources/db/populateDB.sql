@@ -57,6 +57,6 @@ VALUES ('Chicken and Bacon', 200, 100012),
        ('Ginger Sponge Pudding', 480, 100016),
        ('Baked Beans', 150, 100016);
 
-INSERT INTO votes (user_id, restaurant_id, date_time)
-VALUES (100002, 100007, '2022-12-25 10:00'),
-       (100005, 100010, '2022-12-25 12:30');
+INSERT INTO votes (user_id, restaurant_id, date, time)
+VALUES (100002, 100007, '2022-12-25', '10:00'),
+       (100005, 100010, '2022-12-25', '12:30');
