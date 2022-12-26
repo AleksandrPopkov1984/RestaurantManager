@@ -31,7 +31,7 @@ public class UserServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    public void get() {
+    void get() {
         User user = service.get(USER1_ID);
         USER_MATCHER.assertMatch(user, user1);
     }
