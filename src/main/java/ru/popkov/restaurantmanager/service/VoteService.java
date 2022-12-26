@@ -13,17 +13,12 @@ import static ru.popkov.restaurantmanager.util.ValidationUtil.checkNotFoundWithI
 @Service
 public class VoteService {
 
-    private static final LocalTime THRESHOLD_TIME_FOR_CHANGING_VOTE = LocalTime.of(11, 0);
+    public static final LocalTime THRESHOLD_TIME_FOR_CHANGING_VOTE = LocalTime.of(11, 0);
 
     private final VoteRepository repository;
 
     public VoteService(VoteRepository repository) {
         this.repository = repository;
-    }
-
-    public Vote create(Vote vote) {
-        Assert.notNull(vote, "vote must not be null");
-        return repository.save(vote);
     }
 
     public Vote get(int id) {
@@ -36,6 +31,11 @@ public class VoteService {
 
     public Vote getOfUserAndDate(int userId, LocalDate date) {
         return repository.getOfUserAndDate(userId, date);
+    }
+
+    public Vote create(Vote vote) {
+        Assert.notNull(vote, "vote must not be null");
+        return repository.save(vote);
     }
 
     public boolean update(Vote vote) {
