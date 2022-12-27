@@ -9,7 +9,7 @@
         <c:choose>
             <c:when test="${isPermittedTime == false}">
                 It is not permitted time for changing your vote.
-                Please, vote again until 11-00.
+                Please, vote again until ${threshold}.
             </c:when>
             <c:otherwise>
                 <jsp:useBean id="vote" type="ru.popkov.restaurantmanager.model.Vote" scope="request"/>
