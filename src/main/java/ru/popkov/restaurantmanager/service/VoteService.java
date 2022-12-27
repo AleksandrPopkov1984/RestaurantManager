@@ -25,10 +25,6 @@ public class VoteService {
         return checkNotFoundWithId(repository.get(id), id);
     }
 
-    public int getCountOfRestaurant(int restaurantId) {
-        return repository.getCountOfRestaurant(restaurantId);
-    }
-
     public Vote getOfUserAndDate(int userId, LocalDate date) {
         return repository.getOfUserAndDate(userId, date);
     }

@@ -17,7 +17,7 @@ public class RestaurantsUtil {
     }
 
     public static RestaurantTo createTo(Restaurant restaurant) {
-        return new RestaurantTo(restaurant.getId(), restaurant.getName());
+        return new RestaurantTo(restaurant.getId(), restaurant.getName(), getVoteCount(restaurant));
     }
 
     public static Restaurant createNewFromTo(RestaurantTo restaurantTo) {
@@ -27,5 +27,13 @@ public class RestaurantsUtil {
     public static Restaurant updateFromTo(Restaurant restaurant, RestaurantTo restaurantTo) {
         restaurant.setName(restaurantTo.getName());
         return restaurant;
+    }
+
+    public static int getVoteCount(Restaurant restaurant) {
+        if (restaurant.getVotes() != null) {
+            return restaurant.getVotes().size();
+        } else {
+            return 0;
+        }
     }
 }

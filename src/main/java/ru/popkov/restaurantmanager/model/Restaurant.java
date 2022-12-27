@@ -21,7 +21,11 @@ public class Restaurant extends AbstractBaseEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @BatchSize(size = 200)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Menu> menu;
+    private List<Menu> menus;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private List<Vote> votes;
 
     public Restaurant() {
     }
@@ -39,12 +43,20 @@ public class Restaurant extends AbstractBaseEntity {
         this.name = name;
     }
 
-    public List<Menu> getMenu() {
-        return menu;
+    public List<Menu> getMenus() {
+        return menus;
     }
 
-    public void setMenu(List<Menu> menu) {
-        this.menu = menu;
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
     }
 
     @Override

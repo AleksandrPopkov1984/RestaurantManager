@@ -9,20 +9,28 @@ public class RestaurantTo extends BaseTo {
     @Size(max = 128)
     private final String name;
 
-    public RestaurantTo(Integer id, String name) {
+    private final Integer voteCount;
+
+    public RestaurantTo(Integer id, String name, Integer voteCount) {
         super(id);
         this.name = name;
+        this.voteCount = voteCount;
     }
 
     public String getName() {
         return name;
     }
 
+    public Integer getVoteCount() {
+        return voteCount;
+    }
+
     @Override
     public String toString() {
         return "RestaurantTo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
+                ", voteCount=" + voteCount +
+                ", id=" + id +
                 '}';
     }
 }

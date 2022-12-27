@@ -17,6 +17,7 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Count of votes</th>
             <th></th>
             <th></th>
             <th></th>
@@ -29,6 +30,7 @@
             <tr>
                 <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
+                <td>${restaurant.voteCount}</td>
                 <td><a href="${pageContext.request.contextPath}/user/meals?restaurantId=${restaurant.id}">Open Meals</a>
                 </td>
                 <td><a href="${pageContext.request.contextPath}/user/vote?restaurantId=${restaurant.id}">Vote</a></td>

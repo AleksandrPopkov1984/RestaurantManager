@@ -13,7 +13,7 @@ import static ru.popkov.restaurantmanager.service.VoteService.THRESHOLD_TIME_FOR
 
 public class VoteTestData {
 
-    public static final MatcherFactory.Matcher<Vote> VOTE_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant.menu");
+    public static final MatcherFactory.Matcher<Vote> VOTE_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant.menus", "restaurant.votes");
 
     public static final int VOTE1_ID = START_SEQ + 27;
 

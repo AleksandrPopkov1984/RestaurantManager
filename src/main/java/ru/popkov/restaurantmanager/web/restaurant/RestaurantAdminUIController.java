@@ -36,7 +36,7 @@ public class RestaurantAdminUIController extends AbstractRestaurantController {
 
     @GetMapping("/create")
     public String createRestaurant(Model model) {
-        model.addAttribute("restaurant", new RestaurantTo(null, ""));
+        model.addAttribute("restaurant", new RestaurantTo(null, "", 0));
         return "restaurantForm";
     }
 

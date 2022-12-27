@@ -3,7 +3,6 @@ package ru.popkov.restaurantmanager.web.restaurant;
 import org.assertj.core.matcher.AssertionMatcher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.popkov.restaurantmanager.model.Restaurant;
 import ru.popkov.restaurantmanager.service.RestaurantService;
 import ru.popkov.restaurantmanager.to.RestaurantTo;
 import ru.popkov.restaurantmanager.util.RestaurantsUtil;
@@ -33,10 +32,10 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
                 .andExpect(view().name("restaurants"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/restaurants.jsp"))
                 .andExpect(model().attribute("restaurants",
-                        new AssertionMatcher<List<Restaurant>>() {
+                        new AssertionMatcher<List<RestaurantTo>>() {
                             @Override
-                            public void assertion(List<Restaurant> actual) throws AssertionError {
-                                RESTAURANT_MATCHER.assertMatch(actual, restaurants);
+                            public void assertion(List<RestaurantTo> actual) throws AssertionError {
+                                RESTAURANT_TO_MATCHER.assertMatch(actual, restaurantsTo);
                             }
                         }));
     }
@@ -89,7 +88,8 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
         int id = updatedRestaurantTo.getId();
         perform(post(URL)
                 .param("id", String.valueOf(RESTAURANT1_ID))
-                .param("name", "Metropol Luxe"))
+                .param("name", "Metropol Luxe")
+                .param("voteCount", "1"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 
