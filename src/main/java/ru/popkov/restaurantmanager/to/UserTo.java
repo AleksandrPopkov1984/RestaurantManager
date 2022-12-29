@@ -3,6 +3,7 @@ package ru.popkov.restaurantmanager.to;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.beans.ConstructorProperties;
 
 public class UserTo extends BaseTo {
 
@@ -22,6 +23,7 @@ public class UserTo extends BaseTo {
     @Size(min = 5, max = 25)
     private final String password;
 
+    @ConstructorProperties({"id", "surname", "name", "email", "password"})
     public UserTo(Integer id, String surname, String name, String email, String password) {
         super(id);
         this.surname = surname;

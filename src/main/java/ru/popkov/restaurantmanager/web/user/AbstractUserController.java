@@ -64,4 +64,9 @@ public abstract class AbstractUserController {
         log.info(enabled ? "enable {}" : "disable {}", id);
         service.enable(id, enabled);
     }
+
+    public UserTo getByEmail(String email) {
+        log.info("getByEmail {}", email);
+        return UsersUtil.createTo(service.getByEmail(email));
+    }
 }

@@ -2,6 +2,7 @@ package ru.popkov.restaurantmanager.to;
 
 import ru.popkov.restaurantmanager.model.Role;
 
+import java.beans.ConstructorProperties;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,6 +16,7 @@ public class UserToWithFullData extends BaseTo {
     private final Date registered;
     private final Set<Role> roles;
 
+    @ConstructorProperties({"id", "surname", "name", "email", "password", "enabled", "registered", "roles"})
     public UserToWithFullData(Integer id, String surname, String name, String email, String password, boolean enabled, Date registered, Set<Role> roles) {
         super(id);
         this.surname = surname;
