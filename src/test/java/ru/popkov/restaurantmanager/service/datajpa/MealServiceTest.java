@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.popkov.restaurantmanager.MealTestData.*;
 import static ru.popkov.restaurantmanager.MealTestData.getUpdated;
 import static ru.popkov.restaurantmanager.MenuTestData.MENU1_ID;
+import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
 
 public class MealServiceTest extends AbstractServiceTest {
 
@@ -68,5 +69,11 @@ public class MealServiceTest extends AbstractServiceTest {
     void getOfMenu() {
         List<Meal> allOfMenu = service.getOfMenu(MENU1_ID + 4);
         MEAL_MATCHER.assertMatch(allOfMenu, meal9, meal10);
+    }
+
+    @Test
+    void getOfRestaurant() {
+        List<Meal> allOfRestaurant = service.getOfRestaurant(RESTAURANT1_ID);
+        MEAL_MATCHER.assertMatch(allOfRestaurant, meal1, meal2);
     }
 }
