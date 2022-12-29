@@ -44,6 +44,9 @@
         <ehcache.version>3.10.8</ehcache.version>
         <jaxb.version>2.4.0-b180830.0438</jaxb.version>
 
+        <!-- JSON -->
+        <jackson.version>2.14.1</jackson.version>
+
     </properties>
 
     <build>
@@ -204,6 +207,24 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb.version}</version>
         </dependency>
+
+        <!-- JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate5</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

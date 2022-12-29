@@ -9,8 +9,8 @@ import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 
 public class RestaurantTestData {
 
-    public static final MatcherFactory.Matcher<Restaurant> RESTAURANT_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("menus", "votes");
-    public static final MatcherFactory.Matcher<RestaurantTo> RESTAURANT_TO_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("");
+    public static final MatcherFactory.Matcher<Restaurant> RESTAURANT_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Restaurant.class, "menus", "votes");
+    public static final MatcherFactory.Matcher<RestaurantTo> RESTAURANT_TO_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(RestaurantTo.class, "");
 
     public static final int NOT_FOUND = 10;
     public static final int RESTAURANT1_ID = START_SEQ + 7;

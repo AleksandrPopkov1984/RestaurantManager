@@ -10,8 +10,8 @@ import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 
 public class UserTestData {
 
-    public static final MatcherFactory.Matcher<User> USER_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("registered");
-    public static final MatcherFactory.Matcher<UserTo> USER_TO_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("");
+    public static final MatcherFactory.Matcher<User> USER_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(User.class, "registered");
+    public static final MatcherFactory.Matcher<UserTo> USER_TO_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(UserTo.class, "");
 
     public static final int NOT_FOUND = 10;
     public static final int USER1_ID = START_SEQ;

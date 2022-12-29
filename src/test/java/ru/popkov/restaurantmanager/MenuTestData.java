@@ -19,8 +19,8 @@ import static ru.popkov.restaurantmanager.model.AbstractBaseEntity.START_SEQ;
 
 public class MenuTestData {
 
-    public static final MatcherFactory.Matcher<Menu> MENU_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant", "meals");
-    public static final MatcherFactory.Matcher<MenuTo> MENU_TO_MATCHER = MatcherFactory.usingIgnoreFieldsComparator("restaurant", "meals");
+    public static final MatcherFactory.Matcher<Menu> MENU_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Menu.class, "restaurant", "meals");
+    public static final MatcherFactory.Matcher<MenuTo> MENU_TO_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(MenuTo.class, "restaurant", "meals");
 
     public static final int NOT_FOUND = 10;
     public static final int MENU1_ID = START_SEQ + 12;
@@ -29,7 +29,7 @@ public class MenuTestData {
     public static final Menu menu2 = new Menu(MENU1_ID + 1, of(2022, Month.DECEMBER, 20), restaurant2);
     public static final Menu menu3 = new Menu(MENU1_ID + 2, of(2022, Month.DECEMBER, 20), restaurant3);
     public static final Menu menu4 = new Menu(MENU1_ID + 3, of(2022, Month.DECEMBER, 20), restaurant4);
-    public static final Menu menu5 = new Menu(MENU1_ID + 4, of(2022, Month.DECEMBER, 20), restaurant5);
+    public static final Menu menu5 = new Menu(MENU1_ID + 4, of(2022, Month.DECEMBER, 21), restaurant5);
 
     public static final List<Menu> menus = List.of(menu1, menu2, menu3, menu4, menu5);
 
