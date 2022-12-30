@@ -57,4 +57,12 @@ class MenuAdminRestControllerTest extends AbstractControllerTest {
 
         assertThrows(NotFoundException.class, () -> service.get(MENU1_ID));
     }
+
+    @Test
+    void deleteNotFound() throws Exception {
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + NOT_FOUND))
+                .andDo(print())
+                .andExpect(view().name("exception/exception"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
+    }
 }

@@ -68,6 +68,14 @@ class UserRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void deleteNotFound() throws Exception {
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + NOT_FOUND))
+                .andDo(print())
+                .andExpect(view().name("exception/exception"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
+    }
+
+    @Test
     void createWithLocation() throws Exception {
         User newUser = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
