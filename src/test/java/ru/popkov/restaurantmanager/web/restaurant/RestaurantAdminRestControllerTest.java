@@ -59,6 +59,14 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    void deleteNotFound() throws Exception {
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND))
+                .andDo(print())
+                .andExpect(view().name("exception/exception"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
+    }
+
+    @Test
     void createWithLocation() throws Exception {
         Restaurant newRestaurant = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
