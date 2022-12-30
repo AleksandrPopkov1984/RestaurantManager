@@ -2,6 +2,7 @@ package ru.popkov.restaurantmanager.to;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.beans.ConstructorProperties;
 
 public class RestaurantTo extends BaseTo {
 
@@ -11,6 +12,7 @@ public class RestaurantTo extends BaseTo {
 
     private final Integer voteCount;
 
+    @ConstructorProperties({"id", "name", "voteCount"})
     public RestaurantTo(Integer id, String name, Integer voteCount) {
         super(id);
         this.name = name;
