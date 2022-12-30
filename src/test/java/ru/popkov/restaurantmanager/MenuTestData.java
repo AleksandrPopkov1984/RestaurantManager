@@ -33,6 +33,14 @@ public class MenuTestData {
 
     public static final List<Menu> menus = List.of(menu1, menu2, menu3, menu4, menu5);
 
+    public static final MenuTo menuTo1 = new MenuTo(MENU1_ID, of(2022, Month.DECEMBER, 20), restaurant1, List.of());
+    public static final MenuTo menuTo2 = new MenuTo(MENU1_ID + 1, of(2022, Month.DECEMBER, 20), restaurant2, List.of());
+    public static final MenuTo menuTo3 = new MenuTo(MENU1_ID + 2, of(2022, Month.DECEMBER, 20), restaurant3, List.of());
+    public static final MenuTo menuTo4 = new MenuTo(MENU1_ID + 3, of(2022, Month.DECEMBER, 20), restaurant4, List.of());
+    public static final MenuTo menuTo5 = new MenuTo(MENU1_ID + 4, of(2022, Month.DECEMBER, 21), restaurant5, List.of());
+
+    public static final List<MenuTo> menusTo = List.of(menuTo1, menuTo2, menuTo3, menuTo4, menuTo5);
+
     public static final MenuTo newMenuTo = new MenuTo(null, LocalDate.now(), restaurant1,
             List.of(new Meal(null, "dafault meal", BigDecimal.valueOf(100))));
 

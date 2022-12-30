@@ -4,6 +4,7 @@ import ru.popkov.restaurantmanager.model.Meal;
 import ru.popkov.restaurantmanager.model.Restaurant;
 
 import javax.validation.constraints.NotNull;
+import java.beans.ConstructorProperties;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class MenuTo extends BaseTo {
 
     private List<Meal> meals;
 
+    @ConstructorProperties({"id", "date", "restaurant", "meals"})
     public MenuTo(Integer id, LocalDate date, Restaurant restaurant, List<Meal> meals) {
         super(id);
         this.date = date;
