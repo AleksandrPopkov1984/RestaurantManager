@@ -28,6 +28,9 @@ public class MealTestData {
     public static final Meal meal9 = new Meal(MEAL1_ID + 8, "Ginger Sponge Pudding", BigDecimal.valueOf(480));
     public static final Meal meal10 = new Meal(MEAL1_ID + 9, "Baked Beans", BigDecimal.valueOf(150));
 
+    public static final MealTo mealTo1 = new MealTo(MEAL1_ID, "Chicken and Bacon", BigDecimal.valueOf(200), menu1);
+    public static final MealTo mealTo2 = new MealTo(MEAL1_ID + 1, "Steak and Onion Ciabatta", BigDecimal.valueOf(300), menu1);
+
     public static final List<Meal> meals = List.of(meal1, meal2, meal3, meal4, meal5, meal6, meal7, meal8, meal9, meal10);
 
     public static final MealTo mealTo = new MealTo(MEAL1_ID, "Chicken and Bacon", BigDecimal.valueOf(200), null);

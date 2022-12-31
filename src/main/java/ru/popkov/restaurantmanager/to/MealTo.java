@@ -5,6 +5,7 @@ import ru.popkov.restaurantmanager.model.Menu;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import java.beans.ConstructorProperties;
 import java.math.BigDecimal;
 
 public class MealTo extends BaseTo {
@@ -18,6 +19,7 @@ public class MealTo extends BaseTo {
 
     private Menu menu;
 
+    @ConstructorProperties({"id", "name", "price", "menu"})
     public MealTo(Integer id, String name, BigDecimal price, Menu menu) {
         super(id);
         this.name = name;
