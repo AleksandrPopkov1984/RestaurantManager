@@ -23,4 +23,10 @@ public class RootController {
         log.info("redirect to {}", userType);
         return "redirect:" + userType;
     }
+
+    @GetMapping("/login")
+    public String login() {
+        log.info("login");
+        return "login";
+    }
 }
