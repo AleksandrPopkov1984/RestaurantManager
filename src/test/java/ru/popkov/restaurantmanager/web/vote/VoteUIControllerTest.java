@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.user;
 import static ru.popkov.restaurantmanager.web.vote.VoteUIController.URL;
 
 class VoteUIControllerTest extends AbstractControllerTest {
@@ -14,7 +16,8 @@ class VoteUIControllerTest extends AbstractControllerTest {
     @Test
     void notUpdate() throws Exception {
         perform(get(URL)
-                .param("restaurantId", String.valueOf(RESTAURANT1_ID)))
+                .param("restaurantId", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(user)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("vote"))

@@ -17,6 +17,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.popkov.restaurantmanager.RestaurantTestData.*;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.admin;
 import static ru.popkov.restaurantmanager.web.restaurant.RestaurantAdminUIController.URL;
 
 public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
@@ -26,7 +28,8 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
 
     @Test
     void getRestaurants() throws Exception {
-        perform(get(URL))
+        perform(get(URL)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("restaurants"))
@@ -43,7 +46,8 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void delete() throws Exception {
         perform(get(URL + "/delete")
-                .param("id", String.valueOf(RESTAURANT1_ID)))
+                .param("id", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl(URL));
@@ -54,7 +58,8 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void update() throws Exception {
         perform(get(URL + "/update")
-                .param("id", String.valueOf(RESTAURANT1_ID)))
+                .param("id", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("restaurantForm"))
@@ -70,7 +75,8 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
 
     @Test
     void create() throws Exception {
-        perform(get(URL + "/create"))
+        perform(get(URL + "/create")
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("restaurantForm"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/restaurantForm.jsp"))
@@ -89,7 +95,8 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
         perform(post(URL)
                 .param("id", String.valueOf(RESTAURANT1_ID))
                 .param("name", "Metropol Luxe")
-                .param("voteCount", "1"))
+                .param("voteCount", "1")
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 

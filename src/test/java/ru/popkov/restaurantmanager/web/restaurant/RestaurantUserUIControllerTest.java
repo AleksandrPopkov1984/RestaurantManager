@@ -10,6 +10,8 @@ import java.util.List;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.user;
 import static ru.popkov.restaurantmanager.web.restaurant.RestaurantUserUIController.URL;
 import static ru.popkov.restaurantmanager.RestaurantTestData.*;
 
@@ -17,7 +19,8 @@ class RestaurantUserUIControllerTest extends AbstractControllerTest {
 
     @Test
     void getAll() throws Exception {
-        perform(get(URL))
+        perform(get(URL)
+                .with(userAuth(user)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("restaurants"))

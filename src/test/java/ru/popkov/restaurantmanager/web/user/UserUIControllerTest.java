@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
 import static ru.popkov.restaurantmanager.UserTestData.*;
 import static ru.popkov.restaurantmanager.web.user.UserUIController.URL;
 
@@ -28,7 +29,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
 
     @Test
     void getAll() throws Exception {
-        perform(get("/" + URL))
+        perform(get("/" + URL)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("users"))
@@ -44,7 +46,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
 
     @Test
     void create() throws Exception {
-        perform(get("/" + URL + "/create"))
+        perform(get("/" + URL + "/create")
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("userForm"))
@@ -61,7 +64,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
     @Test
     void update() throws Exception {
         perform(get("/" + URL + "/update")
-                .param("id", String.valueOf(USER1_ID)))
+                .param("id", String.valueOf(USER1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("userForm"))
@@ -78,7 +82,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
     @Test
     void delete() throws Exception {
         perform(get("/" + URL + "/delete")
-                .param("id", String.valueOf(USER1_ID + 2)))
+                .param("id", String.valueOf(USER1_ID + 2))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 
@@ -93,7 +98,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
                 .param("surname", updatedUserTo.getSurname())
                 .param("name", updatedUserTo.getName())
                 .param("email", updatedUserTo.getEmail())
-                .param("password", updatedUserTo.getPassword()))
+                .param("password", updatedUserTo.getPassword())
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/admin/users"));
@@ -105,7 +111,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
     @Test
     void showEnabledForm() throws Exception {
         perform(get("/" + URL + "/enable")
-                .param("id", String.valueOf(USER1_ID)))
+                .param("id", String.valueOf(USER1_ID))
+                .with(userAuth(admin)))
                 .andDo((print()))
                 .andExpect(status().isOk())
                 .andExpect(view().name("enabled"))
@@ -125,7 +132,8 @@ public class UserUIControllerTest extends AbstractControllerTest {
         request.setParameter("radio_enabled", String.valueOf(false));
         perform(post("/" + URL + "/enabled")
                 .param("id", String.valueOf(USER1_ID + 5))
-                .param("request", request.getParameter("radio_enabled")))
+                .param("request", request.getParameter("radio_enabled"))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 

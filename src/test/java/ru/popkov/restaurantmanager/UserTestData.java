@@ -30,6 +30,9 @@ public class UserTestData {
     public static final User user6 = new User(USER1_ID + 5, "Anishenko", "Irina", "i_anishenko@gmail.com", "password", Role.USER);
     public static final User user7 = new User(USER1_ID + 6, "Solomatin", "Aleksandr", "a_solomatin@gmail.com", "password", Role.USER);
 
+    public static final User admin = new User(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin", Role.ADMIN, Role.USER);
+    public static final User user = new User(USER1_ID + 2, "Anisimov", "Sergej", "s_anisimov@gmail.com", "password", Role.USER);
+
     public static final List<User> users = List.of(user1, user2, user3, user4, user5, user6, user7);
 
     public static final UserToWithFullData userToWithFullData1 = new UserToWithFullData(USER1_ID, "Vasiljev", "Igor",

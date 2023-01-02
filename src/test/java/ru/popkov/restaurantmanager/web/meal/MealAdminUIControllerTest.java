@@ -21,6 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static ru.popkov.restaurantmanager.MealTestData.*;
 import static ru.popkov.restaurantmanager.MenuTestData.MENU1_ID;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.admin;
 import static ru.popkov.restaurantmanager.web.meal.MealAdminUIController.URL;
 
 public class MealAdminUIControllerTest extends AbstractControllerTest {
@@ -31,7 +33,8 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void getOfMenu() throws Exception {
         perform(get(URL)
-                .param("menuId", String.valueOf(MENU1_ID)))
+                .param("menuId", String.valueOf(MENU1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("meals"))
@@ -55,7 +58,8 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void update() throws Exception {
         perform(get(URL + "/update")
-                .param("id", String.valueOf(MEAL1_ID)))
+                .param("id", String.valueOf(MEAL1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("mealForm"))
@@ -73,7 +77,8 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
     void delete() throws Exception {
         perform(get(URL + "/delete")
                 .param("id", String.valueOf(MEAL1_ID))
-                .param("menuId", String.valueOf(MENU1_ID)))
+                .param("menuId", String.valueOf(MENU1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 
@@ -81,7 +86,8 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
 
         perform(get(URL + "/delete")
                 .param("id", String.valueOf(MEAL1_ID + 1))
-                .param("menuId", String.valueOf(MENU1_ID)));
+                .param("menuId", String.valueOf(MENU1_ID))
+                .with(userAuth(admin)));
         List<Meal> mealList = service.getOfMenu(MENU1_ID);
         assertTrue(mealList.size() == 1);
     }
@@ -89,7 +95,8 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void create() throws Exception {
         perform(get(URL + "/create")
-                .param("menuId", String.valueOf(MENU1_ID + 2)))
+                .param("menuId", String.valueOf(MENU1_ID + 2))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("mealForm"))
@@ -109,7 +116,8 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
                 .param("menuId", String.valueOf(MENU1_ID))
                 .param("id", String.valueOf(MEAL1_ID))
                 .param("name", "Chicken and Bacon")
-                .param("price", String.valueOf(BigDecimal.valueOf(388))))
+                .param("price", String.valueOf(BigDecimal.valueOf(388)))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 

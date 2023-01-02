@@ -14,6 +14,8 @@ import ru.popkov.restaurantmanager.web.json.JsonUtil;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.admin;
 import static ru.popkov.restaurantmanager.web.restaurant.RestaurantAdminRestController.REST_URL;
 import static ru.popkov.restaurantmanager.RestaurantTestData.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -25,7 +27,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getAll() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL))
+        perform(MockMvcRequestBuilders.get(REST_URL)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -34,7 +37,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void get() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + RESTAURANT1_ID))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + RESTAURANT1_ID)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -43,7 +47,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("exception/exception"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
@@ -51,7 +56,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void delete() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + RESTAURANT1_ID))
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + RESTAURANT1_ID)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isNoContent());
 
@@ -60,7 +66,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void deleteNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("exception/exception"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
@@ -71,7 +78,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
         Restaurant newRestaurant = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(newRestaurant)))
+                .content(JsonUtil.writeValue(newRestaurant))
+                .with(userAuth(admin)))
                 .andExpect(status().isCreated());
 
         Restaurant created = RESTAURANT_MATCHER.readFromJson(action);
@@ -86,7 +94,8 @@ class RestaurantAdminRestControllerTest extends AbstractControllerTest {
         Restaurant updated = getUpdated();
         perform(MockMvcRequestBuilders.put(REST_URL + "/" + RESTAURANT1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(updated)))
+                .content(JsonUtil.writeValue(updated))
+                .with(userAuth(admin)))
                 .andExpect(status().isNoContent());
 
         RESTAURANT_MATCHER.assertMatch(service.get(RESTAURANT1_ID), updated);

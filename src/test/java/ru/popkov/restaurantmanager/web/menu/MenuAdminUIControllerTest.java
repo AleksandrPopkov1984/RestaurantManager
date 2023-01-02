@@ -16,6 +16,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.admin;
 import static ru.popkov.restaurantmanager.web.menu.MenuAdminUIController.URL;
 import static ru.popkov.restaurantmanager.MenuTestData.*;
 
@@ -27,7 +29,8 @@ class MenuAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void getOfRestaurant() throws Exception {
         perform(get(URL)
-                .param("restaurantId", String.valueOf(RESTAURANT1_ID)))
+                .param("restaurantId", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("menus"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/menus.jsp"))
@@ -44,7 +47,8 @@ class MenuAdminUIControllerTest extends AbstractControllerTest {
     void delete() throws Exception {
         perform(get(URL + "/delete")
                 .param("id", String.valueOf(MENU1_ID))
-                .param("restaurantId", String.valueOf(RESTAURANT1_ID)))
+                .param("restaurantId", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
 
@@ -54,7 +58,8 @@ class MenuAdminUIControllerTest extends AbstractControllerTest {
     @Test
     void create() throws Exception {
         perform(get(URL + "/create")
-                .param("restaurantId", String.valueOf(RESTAURANT1_ID)))
+                .param("restaurantId", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("menuForm"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/menuForm.jsp"))

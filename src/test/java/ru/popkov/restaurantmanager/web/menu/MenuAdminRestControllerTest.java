@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static ru.popkov.restaurantmanager.RestaurantTestData.RESTAURANT1_ID;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
+import static ru.popkov.restaurantmanager.UserTestData.admin;
 import static ru.popkov.restaurantmanager.web.menu.MenuAdminRestController.REST_URL;
 import static ru.popkov.restaurantmanager.MenuTestData.*;
 
@@ -25,7 +27,8 @@ class MenuAdminRestControllerTest extends AbstractControllerTest {
     @Test
     void getOfRestaurant() throws Exception {
         perform(MockMvcRequestBuilders.get(REST_URL)
-                .param("restaurantId", String.valueOf(RESTAURANT1_ID)))
+                .param("restaurantId", String.valueOf(RESTAURANT1_ID))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -34,7 +37,8 @@ class MenuAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void get() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + MENU1_ID))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + MENU1_ID)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -43,7 +47,8 @@ class MenuAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("exception/exception"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
@@ -51,7 +56,8 @@ class MenuAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void delete() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + MENU1_ID))
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + MENU1_ID)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isNoContent());
 
@@ -60,7 +66,8 @@ class MenuAdminRestControllerTest extends AbstractControllerTest {
 
     @Test
     void deleteNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + NOT_FOUND))
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + NOT_FOUND)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("exception/exception"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));

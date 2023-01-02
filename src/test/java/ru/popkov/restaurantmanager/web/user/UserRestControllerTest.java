@@ -13,6 +13,7 @@ import ru.popkov.restaurantmanager.web.AbstractControllerTest;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static ru.popkov.restaurantmanager.TestUtil.userAuth;
 import static ru.popkov.restaurantmanager.UserTestData.*;
 import static ru.popkov.restaurantmanager.web.user.UserRestController.REST_URL;
 
@@ -23,7 +24,8 @@ class UserRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getAll() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL))
+        perform(MockMvcRequestBuilders.get(REST_URL)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -32,7 +34,8 @@ class UserRestControllerTest extends AbstractControllerTest {
 
     @Test
     void get() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + USER1_ID))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + USER1_ID)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith((MediaType.APPLICATION_JSON)))
@@ -42,7 +45,8 @@ class UserRestControllerTest extends AbstractControllerTest {
 
     @Test
     void getNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND))
+        perform(MockMvcRequestBuilders.get(REST_URL + "/" + NOT_FOUND)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("exception/exception"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
@@ -51,7 +55,8 @@ class UserRestControllerTest extends AbstractControllerTest {
     @Test
     void getByEmail() throws Exception {
         perform(MockMvcRequestBuilders.get(REST_URL + "/by-email")
-                .param("email", user1.getEmail()))
+                .param("email", user1.getEmail())
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -60,16 +65,18 @@ class UserRestControllerTest extends AbstractControllerTest {
 
     @Test
     void delete() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + USER1_ID))
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + (USER1_ID + 1))
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isNoContent());
 
-        assertThrows(NotFoundException.class, () -> service.get(USER1_ID));
+        assertThrows(NotFoundException.class, () -> service.get(USER1_ID + 1));
     }
 
     @Test
     void deleteNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + NOT_FOUND))
+        perform(MockMvcRequestBuilders.delete(REST_URL + "/" + NOT_FOUND)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(view().name("exception/exception"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/exception/exception.jsp"));
@@ -80,7 +87,8 @@ class UserRestControllerTest extends AbstractControllerTest {
         User newUser = getNew();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonWithPassword(newUser, newUser.getPassword())))
+                .content(jsonWithPassword(newUser, newUser.getPassword()))
+                .with(userAuth(admin)))
                 .andExpect(status().isCreated());
 
         User created = USER_MATCHER.readFromJson(action);
@@ -95,7 +103,8 @@ class UserRestControllerTest extends AbstractControllerTest {
         User updated = getUpdated();
         perform(MockMvcRequestBuilders.put(REST_URL + "/" + USER1_ID)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonWithPassword(updated, updated.getPassword())))
+                .content(jsonWithPassword(updated, updated.getPassword()))
+                .with(userAuth(admin)))
                 .andExpect(status().isNoContent());
 
         USER_MATCHER.assertMatch(service.get(USER1_ID), updated);
@@ -105,7 +114,8 @@ class UserRestControllerTest extends AbstractControllerTest {
     void enable() throws Exception {
         perform(MockMvcRequestBuilders.patch(REST_URL + "/" + USER1_ID)
                 .param("enabled", "false")
-                .contentType(MediaType.APPLICATION_JSON))
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(userAuth(admin)))
                 .andDo(print())
                 .andExpect(status().isNoContent());
 
