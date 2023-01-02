@@ -2,9 +2,15 @@ package ru.popkov.restaurantmanager.service;
 
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import ru.popkov.restaurantmanager.AuthorizedUser;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.repository.UserRepository;
 import ru.popkov.restaurantmanager.to.UserTo;
@@ -15,8 +21,9 @@ import java.util.List;
 import static ru.popkov.restaurantmanager.util.ValidationUtil.checkNotFound;
 import static ru.popkov.restaurantmanager.util.ValidationUtil.checkNotFoundWithId;
 
-@Service
-public class UserService {
+@Service("userService")
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
+public class UserService implements UserDetailsService {
 
     private final UserRepository repository;
 
@@ -67,5 +74,14 @@ public class UserService {
     public void enable(int id, boolean enabled) {
         User user = get(id);
         user.setEnabled(enabled);
+    }
+
+    @Override
+    public AuthorizedUser loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = repository.getByEmail(email.toLowerCase());
+        if (user == null) {
+            throw new UsernameNotFoundException("User " + email + " is not found");
+        }
+        return new AuthorizedUser(user);
     }
 }

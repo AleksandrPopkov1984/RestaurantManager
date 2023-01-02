@@ -4,8 +4,13 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.beans.ConstructorProperties;
+import java.io.Serial;
+import java.io.Serializable;
 
-public class UserTo extends BaseTo {
+public class UserTo extends BaseTo implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @NotBlank
     @Size(max = 128)
@@ -17,10 +22,11 @@ public class UserTo extends BaseTo {
 
     @Email
     @NotBlank
+    @Size(max = 100)
     private final String email;
 
     @NotBlank
-    @Size(min = 5, max = 25)
+    @Size(min = 5, max = 32, message = "length must be between 5 and 32 characters")
     private final String password;
 
     @ConstructorProperties({"id", "surname", "name", "email", "password"})
@@ -47,4 +53,6 @@ public class UserTo extends BaseTo {
     public String getPassword() {
         return password;
     }
+
+
 }
