@@ -16,4 +16,13 @@ public class RootControllerTest extends AbstractControllerTest {
                 .andExpect(view().name("index"))
                 .andExpect(forwardedUrl("/WEB-INF/jsp/index.jsp"));
     }
+
+    @Test
+    void login() throws Exception {
+        perform(get("/login"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("login"))
+                .andExpect(forwardedUrl("/WEB-INF/jsp/login.jsp"));
+    }
 }
