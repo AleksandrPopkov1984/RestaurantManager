@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.popkov.restaurantmanager.model.Vote;
+import ru.popkov.restaurantmanager.web.SecurityUtil;
 
 import static ru.popkov.restaurantmanager.service.VoteService.THRESHOLD_TIME_FOR_CHANGING_VOTE;
 
@@ -17,7 +18,7 @@ public class VoteUIController extends AbstractVoteController {
 
     @GetMapping
     public String createOrUpdate(@RequestParam int restaurantId, Model model) {
-        int userId = 100003;
+        int userId = SecurityUtil.safeGet().getId();
         Vote vote = super.getOfUserAndDate(userId);
         if (vote == null) {
             model.addAttribute("vote", super.create(restaurantId, userId));
