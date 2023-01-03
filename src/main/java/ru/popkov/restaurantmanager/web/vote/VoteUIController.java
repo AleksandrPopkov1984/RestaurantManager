@@ -1,5 +1,6 @@
 package ru.popkov.restaurantmanager.web.vote;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ public class VoteUIController extends AbstractVoteController {
     public static final String URL = "/user/vote";
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String createOrUpdate(@RequestParam int restaurantId, Model model) {
         int userId = SecurityUtil.safeGet().getId();
         Vote vote = super.getOfUserAndDate(userId);

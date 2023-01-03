@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <head>
     <title>Meals</title>
@@ -41,13 +43,17 @@
         </c:forEach>
     </table>
     <br>
-    <form method="get" action="${pageContext.request.contextPath}/admin/restaurants/menus">
-        <input type="hidden" name="restaurantId" id="restaurantId" value="${restaurantId}"/>
-        <button type="submit">Ok</button>
-    </form>
-    <form method="get" action="${pageContext.request.contextPath}/user/restaurants/">
-        <button type="submit">Ok</button>
-    </form>
+    <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <form method="get" action="${pageContext.request.contextPath}/admin/restaurants/menus">
+            <input type="hidden" name="restaurantId" id="restaurantId" value="${restaurantId}"/>
+            <button type="submit">Ok</button>
+        </form>
+    </sec:authorize>
+    <sec:authorize access="hasRole('ROLE_USER')">
+        <form method="get" action="${pageContext.request.contextPath}/user/restaurants/">
+            <button type="submit">Ok</button>
+        </form>
+    </sec:authorize>
 </section>
 </body>
 </html>
