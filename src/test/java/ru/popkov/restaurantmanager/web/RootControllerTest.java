@@ -16,9 +16,9 @@ public class RootControllerTest extends AbstractControllerTest {
         perform(get("/")
                 .with(userAuth(admin)))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("admins"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/admins.jsp"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:admin"))
+                .andExpect(redirectedUrl("admin"));
     }
 
     @Test

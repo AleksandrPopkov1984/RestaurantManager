@@ -26,7 +26,7 @@ public class RootController {
         boolean hasAdminRole = authorizedUser.getRoles().contains(Role.ADMIN);
         if (hasAdminRole) {
             log.info("admin root");
-            return "admins";
+            return "redirect:admin";
         } else {
             log.info("user root");
             return "redirect:user/restaurants";
