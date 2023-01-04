@@ -4,9 +4,10 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<hr/>
+
 <section>
-    <h3><a href="">Home</a></h3>
-    <hr/>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
         <a href="admin/restaurants/create">Add restaurant</a>
         <br/>

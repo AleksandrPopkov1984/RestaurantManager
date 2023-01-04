@@ -30,6 +30,11 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
         return userTo;
     }
 
+    public void setTo(UserTo newTo) {
+        newTo.setPassword(null);
+        userTo = newTo;
+    }
+
     @Override
     public String toString() {
         return userTo.toString();

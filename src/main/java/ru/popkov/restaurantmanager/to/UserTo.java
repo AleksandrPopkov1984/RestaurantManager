@@ -14,20 +14,20 @@ public class UserTo extends BaseTo implements Serializable {
 
     @NotBlank
     @Size(max = 128)
-    private final String surname;
+    private String surname;
 
     @NotBlank
     @Size(max = 128)
-    private final String name;
+    private String name;
 
     @Email
     @NotBlank
     @Size(max = 100)
-    private final String email;
+    private String email;
 
     @NotBlank
     @Size(min = 5, max = 32, message = "length must be between 5 and 32 characters")
-    private final String password;
+    private String password;
 
     @ConstructorProperties({"id", "surname", "name", "email", "password"})
     public UserTo(Integer id, String surname, String name, String email, String password) {
@@ -52,6 +52,22 @@ public class UserTo extends BaseTo implements Serializable {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

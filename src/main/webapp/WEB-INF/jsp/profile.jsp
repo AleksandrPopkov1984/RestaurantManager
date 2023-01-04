@@ -8,23 +8,23 @@
     <h3><a href="">Home</a></h3>
     <hr/>
     <h2>${register ? 'Register' : 'Update'}</h2>
-    <form method="post" action="profile/register">
-        <input type="hidden" name="id" value="${user.id}">
+    <form method="post" action="${register ? 'profile/register' : 'profile'}">
+        <input type="hidden" name="id" value="${userTo.id}">
         <dl>
             <dt>Surname</dt>
-            <dd><input type="text" value="${user.surname}" name="surname" required></dd>
+            <dd><input type="text" value="${userTo.surname}" name="surname" required></dd>
         </dl>
         <dl>
             <dt>Name</dt>
-            <dd><input type="text" value="${user.name}" name="name" required></dd>
+            <dd><input type="text" value="${userTo.name}" name="name" required></dd>
         </dl>
         <dl>
             <dt>Email</dt>
-            <dd><input type="email" value="${user.email}" name="email" required></dd>
+            <dd><input type="email" value="${userTo.email}" name="email" required></dd>
         </dl>
         <dl>
             <dt>Password</dt>
-            <dd><input type="text" value="${user.password}" name="password" title="from 5 to 32 characters" required>
+            <dd><input type="text" value="${userTo.password}" name="password" title="from 5 to 32 characters" required>
             </dd>
         </dl>
         <button type="submit">Save</button>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import ru.popkov.restaurantmanager.to.UserTo;
+import ru.popkov.restaurantmanager.web.SecurityUtil;
 
 import javax.validation.Valid;
 
@@ -17,9 +18,26 @@ public class ProfileUIController extends AbstractUserController {
 
     public static final String URL = "/profile";
 
+    @GetMapping
+    public String profile() {
+        return "profile";
+    }
+
+    @PostMapping
+    public String updateProfile(@Valid UserTo userTo, BindingResult result, SessionStatus status) {
+        if (result.hasErrors()) {
+            return "profile";
+        } else {
+            super.update(userTo, SecurityUtil.authUserId());
+            SecurityUtil.get().setTo(userTo);
+            status.setComplete();
+            return "redirect:/";
+        }
+    }
+
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("user", new UserTo(null, "", "", "", ""));
+        model.addAttribute("userTo", new UserTo(null, "", "", "", ""));
         model.addAttribute("register", true);
         return "profile";
     }

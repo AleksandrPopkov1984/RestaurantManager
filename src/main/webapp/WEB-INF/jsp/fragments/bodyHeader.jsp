@@ -11,5 +11,7 @@
     <a href="logout">Logout</a>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_USER')">
-    <a href="user/restaurants">Restaurants</a>
+    <a href="user/restaurants">Restaurants</a> |
+    <a href="profile">Profile</a> |
+    <a href="logout">Logout</a>
 </sec:authorize>
