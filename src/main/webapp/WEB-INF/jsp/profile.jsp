@@ -2,16 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<head>
-    <title>Profile</title>
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 <section>
-    <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
+    <h3><a href="">Home</a></h3>
     <hr/>
-    <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserTo" scope="request"/>
     <h2>${register ? 'Register' : 'Update'}</h2>
-    <form method="post" action="${pageContext.request.contextPath}/profile/register">
+    <form method="post" action="profile/register">
         <input type="hidden" name="id" value="${user.id}">
         <dl>
             <dt>Surname</dt>

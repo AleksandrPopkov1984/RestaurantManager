@@ -3,13 +3,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 
 <section>
     <jsp:useBean id="meal" type="ru.popkov.restaurantmanager.to.MealTo" scope="request"/>
     <h3>${meal.id == null ? 'Add new meal' : 'Update meal'}</h3>
     <hr/>
-    <form method="post" action="${pageContext.request.contextPath}/admin/restaurants/menus/menu?menuId=${meal.menu.id}">
+    <form method="post" action="admin/restaurants/menus/menu?menuId=${meal.menu.id}">
         <input type="hidden" name="id" value="${meal.id}">
         <dl>
             <dt>Name</dt>

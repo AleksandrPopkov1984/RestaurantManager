@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 
 <section>
@@ -10,7 +11,7 @@
     <h3>Add new menu</h3>
     <hr/>
     <form method="post"
-          action="${pageContext.request.contextPath}/admin/restaurants/menus?restaurantId=${menu.restaurant.id}">
+          action="admin/restaurants/menus?restaurantId=${menu.restaurant.id}">
         <input type="hidden" name="id" value="${menu.id}">
         <dl>
             <dt>Date</dt>

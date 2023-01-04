@@ -3,9 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
-<head>
-    <title>Login</title>
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 
 <div align="center">
@@ -14,7 +12,7 @@
 <c:if test="${not empty param.message}">
     <h3><font color="green">You are registered. Please Sign in.</font></h3>
 </c:if>
-<form method="get" action="${pageContext.request.contextPath}/profile/register">
+<form method="get" action="profile/register">
     <button type="submit">Register</button>
 </form>
 <form method="post" action="spring_security_check">

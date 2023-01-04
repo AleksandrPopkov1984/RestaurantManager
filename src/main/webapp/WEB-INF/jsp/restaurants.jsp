@@ -2,16 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
-<head>`
-    <title>Restaurants</title>
-    <base href="${pageContext.request.contextPath}/">
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 <section>
-    <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
+    <h3><a href="">Home</a></h3>
     <hr/>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <a href="${pageContext.request.contextPath}/admin/restaurants/create">Add restaurant</a>
+        <a href="admin/restaurants/create">Add restaurant</a>
         <br/>
         <br/>
     </sec:authorize>
@@ -39,21 +36,21 @@
                 <td>${restaurant.name}</td>
                 <td>${restaurant.voteCount}</td>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <td><a href="${pageContext.request.contextPath}/user/meals?restaurantId=${restaurant.id}">Open
+                    <td><a href="user/meals?restaurantId=${restaurant.id}">Open
                         Meals</a>
                     </td>
-                    <td><a href="${pageContext.request.contextPath}/user/vote?restaurantId=${restaurant.id}">Vote</a>
+                    <td><a href="user/vote?restaurantId=${restaurant.id}">Vote</a>
                     </td>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/restaurants/menus?restaurantId=${restaurant.id}">Open
+                        <a href="admin/restaurants/menus?restaurantId=${restaurant.id}">Open
                             menus</a></td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/restaurants/update?id=${restaurant.id}">Update</a>
+                        <a href="admin/restaurants/update?id=${restaurant.id}">Update</a>
                     </td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/admin/restaurants/delete?id=${restaurant.id}">Delete</a>
+                        <a href="admin/restaurants/delete?id=${restaurant.id}">Delete</a>
                     </td>
                 </sec:authorize>
             </tr>

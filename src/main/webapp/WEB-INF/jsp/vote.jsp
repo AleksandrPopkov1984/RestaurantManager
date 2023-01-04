@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 
 <section>
@@ -25,7 +26,7 @@
         </c:choose>
     </h3>
     <br/>
-    <form method="get" action="${pageContext.request.contextPath}/user/restaurants">
+    <form method="get" action="user/restaurants">
         <button type="submit">Ok</button>
     </form>
 </section>

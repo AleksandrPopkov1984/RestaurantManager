@@ -3,16 +3,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
-<head>
-    <title>Meals</title>
-</head>
+<jsp:include page="fragments/headTag.jsp"/>
 <body>
 <section>
     <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
     <br>
     <c:forEach items="${requestScope.meals}" var="meal" end="0">
-        <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add
+        <a href="admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add
             meal</a>
     </c:forEach>
     <br/>
@@ -34,23 +32,23 @@
                 <td>${meal.name}</td>
                 <td>${meal.price}</td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/update?menuId=${meal.menu.id}&id=${meal.id}">Update</a>
+                    <a href="admin/restaurants/menus/menu/update?menuId=${meal.menu.id}&id=${meal.id}">Update</a>
                 </td>
                 <td>
-                    <a href="${pageContext.request.contextPath}/admin/restaurants/menus/menu/delete?menuId=${meal.menu.id}&id=${meal.id}">Delete</a>
+                    <a href="admin/restaurants/menus/menu/delete?menuId=${meal.menu.id}&id=${meal.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
     </table>
     <br>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <form method="get" action="${pageContext.request.contextPath}/admin/restaurants/menus">
+        <form method="get" action="admin/restaurants/menus">
             <input type="hidden" name="restaurantId" id="restaurantId" value="${restaurantId}"/>
             <button type="submit">Ok</button>
         </form>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_USER')">
-        <form method="get" action="${pageContext.request.contextPath}/user/restaurants/">
+        <form method="get" action="user/restaurants/">
             <button type="submit">Ok</button>
         </form>
     </sec:authorize>
