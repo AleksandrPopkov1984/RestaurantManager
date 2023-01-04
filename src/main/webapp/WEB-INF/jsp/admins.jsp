@@ -3,6 +3,9 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<hr/>
+
 <section>
     <h2>Admin page</h2>
     <br/>
