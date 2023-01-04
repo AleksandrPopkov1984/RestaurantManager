@@ -18,7 +18,7 @@
                         Your vote of restaurant "${vote.restaurant.name}" has been accepted.
                     </c:when>
                     <c:otherwise>
-                        Your vote has been changed to restaurant "${vote.restaurant.name}."
+                        Your vote has been changed to restaurant "${vote.restaurant.name}".
                     </c:otherwise>
                 </c:choose>
             </c:otherwise>

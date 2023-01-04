@@ -11,9 +11,15 @@
 <div align="center">
     <h1>User login</h1>
 </div>
+<c:if test="${not empty param.message}">
+    <h3><font color="green">You are registered. Please Sign in.</font></h3>
+</c:if>
+<form method="get" action="${pageContext.request.contextPath}/profile/register">
+    <button type="submit">Register</button>
+</form>
 <form method="post" action="spring_security_check">
     <p><label for="username">User:</label></p>
-    <input type="text" id="username" name="username"/>
+    <input type="text" id="username" name="username" value="${param.username}"/>
     <p><label for="password">Password:</label></p>
     <input type="password" id="password" name="password">
     <div>

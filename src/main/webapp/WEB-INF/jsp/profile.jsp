@@ -1,15 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
+<head>
+    <title>Profile</title>
+</head>
 <body>
-
 <section>
-    <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserTo" scope="request"/>
-    <h3>${user.id == null ? 'Add new user' : 'Update user'}</h3>
+    <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
     <hr/>
-    <form method="post" action="${pageContext.request.contextPath}/admin/users">
+    <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserTo" scope="request"/>
+    <h2>${register ? 'Register' : 'Update'}</h2>
+    <form method="post" action="${pageContext.request.contextPath}/profile/register">
         <input type="hidden" name="id" value="${user.id}">
         <dl>
             <dt>Surname</dt>
