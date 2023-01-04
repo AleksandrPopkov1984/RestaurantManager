@@ -45,6 +45,10 @@
         </property>
     </bean>
 
+    <mvc:interceptors>
+        <bean class="ru.popkov.restaurantmanager.web.interceptor.ModelInterceptor"/>
+    </mvc:interceptors>
+
     <!--
         <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
               p:cacheSeconds="60"

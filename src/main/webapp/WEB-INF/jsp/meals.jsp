@@ -21,8 +21,10 @@
             <th>Id</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <th>Update</th>
+                <th>Delete</th>
+            </sec:authorize>
         </tr>
         </thead>
         <c:forEach items="${requestScope.meals}" var="meal">
@@ -31,12 +33,14 @@
                 <td>${meal.id}</td>
                 <td>${meal.name}</td>
                 <td>${meal.price}</td>
-                <td>
-                    <a href="admin/restaurants/menus/menu/update?menuId=${meal.menu.id}&id=${meal.id}">Update</a>
-                </td>
-                <td>
-                    <a href="admin/restaurants/menus/menu/delete?menuId=${meal.menu.id}&id=${meal.id}">Delete</a>
-                </td>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <td>
+                        <a href="admin/restaurants/menus/menu/update?menuId=${meal.menu.id}&id=${meal.id}">Update</a>
+                    </td>
+                    <td>
+                        <a href="admin/restaurants/menus/menu/delete?menuId=${meal.menu.id}&id=${meal.id}">Delete</a>
+                    </td>
+                </sec:authorize>
             </tr>
         </c:forEach>
     </table>
