@@ -54,5 +54,14 @@ public class UserTo extends BaseTo implements Serializable {
         return password;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserTo{" +
+                "surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
