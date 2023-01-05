@@ -10,10 +10,12 @@
 
 <section>
     <br>
-    <c:forEach items="${requestScope.meals}" var="meal" end="0">
-        <a href="admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add
-            meal</a>
-    </c:forEach>
+    <sec:authorize access="hasRole('ROLE_ADMIN')">
+        <c:forEach items="${requestScope.meals}" var="meal" end="0">
+            <a href="admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add
+                meal</a>
+        </c:forEach>
+    </sec:authorize>
     <br/>
     <br/>
     <table border="1" cellpadding="8" cellspacing="0">
