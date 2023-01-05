@@ -25,7 +25,7 @@
         </dl>
         <dl>
             <dt>Password</dt>
-            <dd><input type="text" value="${userTo.password}" name="password" title="from 5 to 32 characters" required>
+            <dd><input type="password" value="${userTo.password}" name="password" title="from 5 to 32 characters" required>
             </dd>
         </dl>
         <button type="submit">Save</button>
