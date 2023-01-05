@@ -5,9 +5,10 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<hr/>
+
 <section>
-    <h3><a href="${pageContext.request.contextPath}">Home</a></h3>
-    <hr/>
     <br>
     <c:forEach items="${requestScope.meals}" var="meal" end="0">
         <a href="admin/restaurants/menus/menu/create?menuId=${meal.menu.id}">Add
@@ -48,12 +49,12 @@
     <sec:authorize access="hasRole('ROLE_ADMIN')">
         <form method="get" action="admin/restaurants/menus">
             <input type="hidden" name="restaurantId" id="restaurantId" value="${restaurantId}"/>
-            <button type="submit">Ok</button>
+            <button type="submit">Back</button>
         </form>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_USER')">
         <form method="get" action="user/restaurants/">
-            <button type="submit">Ok</button>
+            <button type="submit">Back</button>
         </form>
     </sec:authorize>
 </section>

@@ -4,9 +4,10 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<hr/>
+
 <section>
-    <h3><a href="">Home</a></h3>
-    <hr/>
     <h2>${register ? 'Register' : 'Update'}</h2>
     <form method="post" action="${register ? 'profile/register' : 'profile'}">
         <input type="hidden" name="id" value="${userTo.id}">

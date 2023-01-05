@@ -5,11 +5,12 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<hr/>
+
 <section>
-    <h3><a href="">Home</a></h3>
-    <hr/>
-        <a href="admin/restaurants/menus/create?restaurantId=${restaurantId}">Add
-            menu</a>
+    <a href="admin/restaurants/menus/create?restaurantId=${restaurantId}">Add
+        menu</a>
     <br/>
     <br/>
     <table border="1" cellpadding="8" cellspacing="0">
@@ -38,7 +39,7 @@
     </table>
     <br>
     <form method="get" action="admin/restaurants">
-        <button type="submit">Ok</button>
+        <button type="submit">Back</button>
     </form>
 </section>
 </body>

@@ -5,9 +5,10 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
+<jsp:include page="fragments/bodyHeader.jsp"/>
+<hr/>
+
 <section>
-    <h3><a href="">Home</a></h3>
-    <hr/>
     <a href="admin/users/create">Add user</a>
     <br/>
     <br/>
