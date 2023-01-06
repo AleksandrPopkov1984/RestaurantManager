@@ -23,11 +23,6 @@ public class MenuService {
         return repository.save(menu, restaurantId);
     }
 
-    public void update(Menu menu, int restaurantId) {
-        Assert.notNull(menu, "menu must not be mull");
-        checkNotFoundWithId(repository.save(menu, restaurantId), menu.id());
-    }
-
     public void delete(int id) {
         checkNotFoundWithId(repository.delete(id), id);
     }

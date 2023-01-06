@@ -2,6 +2,7 @@ package ru.popkov.restaurantmanager.service.datajpa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import ru.popkov.restaurantmanager.model.Menu;
 import ru.popkov.restaurantmanager.service.AbstractServiceTest;
 import ru.popkov.restaurantmanager.service.MenuService;
@@ -57,10 +58,9 @@ public class MenuServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    void update() {
-        Menu updated = getUpdated();
-        service.update(updated, RESTAURANT1_ID + 4);
-        MENU_MATCHER.assertMatch(service.get(MENU1_ID), updated);
+    void duplicateDateCreate() {
+        service.create(getNew(), RESTAURANT1_ID);
+        assertThrows(DataAccessException.class, () -> service.create(getNew(), RESTAURANT1_ID));
     }
 
     @Test
