@@ -4,14 +4,14 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <sec:authorize access="hasRole('ROLE_ADMIN')">
-    <a href="admin/restaurants">Restaurants</a> |
-    <a href="admin/users">Users</a> |
-    <a href="">Home</a> |
-    <a href="profile">Profile</a> |
-    <a href="logout">Logout</a>
+    <a href="admin/restaurants"><spring:message code="header.restaurants"/></a> |
+    <a href="admin/users"><spring:message code="header.users"/></a> |
+    <a href=""><spring:message code="header.home"/></a> |
+    <a href="profile"><spring:message code="header.profile"/></a> |
+    <a href="logout"><spring:message code="header.logout"/></a>
 </sec:authorize>
 <sec:authorize access="hasRole('ROLE_USER')">
-    <a href="user/restaurants">Restaurants</a> |
-    <a href="profile">Profile</a> |
-    <a href="logout">Logout</a>
+    <a href="user/restaurants"><spring:message code="header.restaurants"/></a> |
+    <a href="profile"><spring:message code="header.profile"/></a> |
+    <a href="logout"><spring:message code="header.logout"/></a>
 </sec:authorize>

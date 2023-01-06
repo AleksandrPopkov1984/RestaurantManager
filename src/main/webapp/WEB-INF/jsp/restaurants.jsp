@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
@@ -9,7 +11,7 @@
 
 <section>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <a href="admin/restaurants/create">Add restaurant</a>
+        <a href="admin/restaurants/create"><spring:message code="restaurant.add"/></a>
         <br/>
         <br/>
     </sec:authorize>
@@ -17,16 +19,16 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
-            <th>Count of votes</th>
+            <th><spring:message code="restaurant.name"/></th>
+            <th><spring:message code="restaurant.count"/></th>
             <sec:authorize access="hasRole('ROLE_USER')">
-                <th></th>
-                <th></th>
+                <th><spring:message code="restaurant.showMeals"/></th>
+                <th><spring:message code="restaurant.vote"/></th>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <th></th>
-                <th></th>
-                <th></th>
+                <th><spring:message code="restaurant.showMenus"/></th>
+                <th><spring:message code="restaurant.update"/></th>
+                <th><spring:message code="restaurant.delete"/></th>
             </sec:authorize>
         </tr>
         </thead>
@@ -37,21 +39,23 @@
                 <td>${restaurant.name}</td>
                 <td>${restaurant.voteCount}</td>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <td><a href="user/meals?restaurantId=${restaurant.id}">Open
-                        Meals</a>
+                    <td><a href="user/meals?restaurantId=${restaurant.id}"><spring:message
+                            code="restaurant.showMeals"/></a>
                     </td>
-                    <td><a href="user/vote?restaurantId=${restaurant.id}">Vote</a>
+                    <td><a href="user/vote?restaurantId=${restaurant.id}"><spring:message code="restaurant.vote"/></a>
                     </td>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <td>
-                        <a href="admin/restaurants/menus?restaurantId=${restaurant.id}">Open
-                            menus</a></td>
+                        <a href="admin/restaurants/menus?restaurantId=${restaurant.id}"><spring:message
+                                code="restaurant.showMenus"/></a></td>
                     <td>
-                        <a href="admin/restaurants/update?id=${restaurant.id}">Update</a>
+                        <a href="admin/restaurants/update?id=${restaurant.id}"><spring:message
+                                code="restaurant.update"/></a>
                     </td>
                     <td>
-                        <a href="admin/restaurants/delete?id=${restaurant.id}">Delete</a>
+                        <a href="admin/restaurants/delete?id=${restaurant.id}"><spring:message
+                                code="restaurant.delete"/></a>
                     </td>
                 </sec:authorize>
             </tr>
