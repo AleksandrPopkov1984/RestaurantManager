@@ -7,28 +7,30 @@
 <body>
 
 <div align="center">
-    <h1>User login</h1>
+    <h1><spring:message code="app.title"/></h1>
 </div>
 <c:if test="${not empty param.message}">
-    <h3><font color="green">You are registered. Please Sign in.</font></h3>
+    <h3><font color="green"><spring:message code="login.registerInformation"/></font></h3>
 </c:if>
-<form method="get" action="profile/register">
-    <button type="submit">Register</button>
-</form>
 <form method="post" action="spring_security_check">
-    <p><label for="username">User:</label></p>
+    <p><label for="username"><spring:message code="login.login"/></label></p>
     <input type="text" id="username" name="username" value="${param.username}"/>
-    <p><label for="password">Password:</label></p>
+    <p><label for="password"><spring:message code="login.password"/></label></p>
     <input type="password" id="password" name="password">
     <div>
         <p>
-            <input name="submit" type="submit" value="Submit"/>
-            <input name="reset" type="reset" value="Reset">
+            <input name="submit" type="submit" value="<spring:message code="login.submit"/>"/>
+            <input name="reset" type="reset" value="<spring:message code="login.reset"/>"/>
         </p>
     </div>
 </form>
+<br/>
+<br/>
+<form method="get" action="profile/register">
+    <button type="submit"><spring:message code="login.register"/></button>
+</form>
 <c:if test="${param.error}">
-    <p><font color="red">Invalid username / password</font></p>
+    <p><font color="red"><spring:message code="login.invalidData"/></font></p>
 </c:if>
 </body>
 </html>
