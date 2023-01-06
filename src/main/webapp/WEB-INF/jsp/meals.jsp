@@ -22,7 +22,6 @@
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
-            <th>Id</th>
             <th><spring:message code="meal.name"/></th>
             <th><spring:message code="meal.price"/></th>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -34,7 +33,6 @@
         <c:forEach items="${requestScope.meals}" var="meal">
             <jsp:useBean id="meal" type="ru.popkov.restaurantmanager.to.MealTo"/>
             <tr>
-                <td>${meal.id}</td>
                 <td>${meal.name}</td>
                 <td>${meal.price}</td>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">

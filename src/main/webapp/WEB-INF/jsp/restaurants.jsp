@@ -12,13 +12,12 @@
 <section>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
         <a href="admin/restaurants/create"><spring:message code="restaurant.add"/></a>
-        <br/>
-        <br/>
     </sec:authorize>
+        <br/>
+        <br/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
-            <th>Id</th>
             <th><spring:message code="restaurant.name"/></th>
             <th><spring:message code="restaurant.count"/></th>
             <sec:authorize access="hasRole('ROLE_USER')">
@@ -35,7 +34,6 @@
         <c:forEach items="${requestScope.restaurants}" var="restaurant">
             <jsp:useBean id="restaurant" type="ru.popkov.restaurantmanager.to.RestaurantTo"/>
             <tr>
-                <td>${restaurant.id}</td>
                 <td>${restaurant.name}</td>
                 <td>${restaurant.voteCount}</td>
                 <sec:authorize access="hasRole('ROLE_USER')">

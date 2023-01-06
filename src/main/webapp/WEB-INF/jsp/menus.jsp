@@ -17,7 +17,6 @@
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
-            <th>Id</th>
             <th><spring:message code="menu.date"/></th>
             <th><spring:message code="menu.restaurant"/></th>
             <th><spring:message code="menu.showMeals"/></th>
@@ -27,7 +26,6 @@
         <c:forEach items="${requestScope.menus}" var="menu">
             <jsp:useBean id="menu" type="ru.popkov.restaurantmanager.to.MenuTo"/>
             <tr>
-                <td>${menu.id}</td>
                 <td>${menu.date}</td>
                 <td>${menu.restaurant.name}</td>
                 <td><a href="admin/restaurants/menus/menu?menuId=${menu.id}"><spring:message code="menu.showMeals"/></a></td>

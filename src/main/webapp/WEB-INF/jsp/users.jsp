@@ -16,7 +16,6 @@
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
-            <th>Id</th>
             <th><spring:message code="user.surname"/></th>
             <th><spring:message code="user.name"/></th>
             <th><spring:message code="user.email"/></th>
@@ -31,7 +30,6 @@
         <c:forEach items="${requestScope.users}" var="user">
             <jsp:useBean id="user" type="ru.popkov.restaurantmanager.to.UserToWithFullData"/>
             <tr>
-                <td>${user.id}</td>
                 <td>${user.surname}</td>
                 <td>${user.name}</td>
                 <td><a href="mailto:${user.email}">${user.email}</a></td>
