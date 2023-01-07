@@ -53,4 +53,18 @@ public class ProfileUIController extends AbstractUserController {
             return "redirect:/login?message=registered&username=" + userTo.getEmail();
         }
     }
+
+    @GetMapping("/test/admin")
+    public String loginAsAdmin() {
+        String userName = "a_nikolaev@gmail.com";
+        String password = "admin";
+        return "redirect:/login?username=" + userName + "&password=" + password;
+    }
+
+    @GetMapping("/test/user")
+    public String loginAsUser() {
+        String userName = "s_anisimov@gmail.com";
+        String password = "password";
+        return "redirect:/login?username=" + userName + "&password=" + password;
+    }
 }

@@ -9,6 +9,14 @@
 <div align="center">
     <h1><spring:message code="app.title"/></h1>
 </div>
+<button type="submit" onclick="location.href='/restaurant-manager/profile/test/admin'">
+    <spring:message code="login.admin"/>
+</button>
+<button type="submit" onclick="location.href='/restaurant-manager/profile/test/user'">
+    <spring:message code="login.user"/>
+</button>
+<br/>
+<br/>
 <c:if test="${not empty param.message}">
     <h3><font color="green"><spring:message code="login.registerInformation"/></font></h3>
 </c:if>
@@ -16,7 +24,7 @@
     <p><label for="username"><spring:message code="login.login"/></label></p>
     <input type="text" id="username" name="username" value="${param.username}"/>
     <p><label for="password"><spring:message code="login.password"/></label></p>
-    <input type="password" id="password" name="password">
+    <input type="password" id="password" name="password" value="${param.password}">
     <div>
         <p>
             <input name="submit" type="submit" value="<spring:message code="login.submit"/>"/>
