@@ -20,8 +20,8 @@
             <dt><spring:message code="meal.price"/></dt>
             <dd><input type="number" value="${meal.price}" name="price" required></dd>
         </dl>
-        <button type="submit"><spring:message code="common.save"/></button>
-        <button onclick="window.history.back()" type="button"><spring:message code="common.cancel"/></button>
+        <button type="submit" class="submit"><spring:message code="common.save"/></button>
+        <button onclick="window.history.back()" type="button" class="submit"><spring:message code="common.cancel"/></button>
     </form>
 </section>
 </body>

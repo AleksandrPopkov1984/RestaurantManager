@@ -17,8 +17,8 @@
             <dd><input type="text" value="${restaurant.name}" name="name" required></dd>
         </dl>
         <br/>
-        <button type="submit"><spring:message code="common.save"/></button>
-        <button onclick="window.history.back()" type="button"><spring:message code="common.cancel"/></button>
+        <button type="submit" class="submit"><spring:message code="common.save"/></button>
+        <button onclick="window.history.back()" type="button" class="submit"><spring:message code="common.cancel"/></button>
     </form>
 </section>
 </body>
