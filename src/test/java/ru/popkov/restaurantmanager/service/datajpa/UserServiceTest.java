@@ -22,14 +22,6 @@ public class UserServiceTest extends AbstractServiceTest {
     @Autowired
     private UserService service;
 
-    @Autowired
-    private CacheManager cacheManager;
-
-    @BeforeEach
-    void setup() {
-        cacheManager.getCache("users").clear();
-    }
-
     @Test
     void get() {
         User user = service.get(USER1_ID);
