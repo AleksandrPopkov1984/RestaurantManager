@@ -1,5 +1,6 @@
 package ru.popkov.restaurantmanager.service;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.popkov.restaurantmanager.model.Vote;
@@ -29,11 +30,13 @@ public class VoteService {
         return repository.getOfUserAndDate(userId, date);
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public Vote create(Vote vote) {
         Assert.notNull(vote, "vote must not be null");
         return repository.save(vote);
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public boolean update(Vote vote) {
         if (vote.getTime().isAfter(THRESHOLD_TIME_FOR_CHANGING_VOTE)) {
             return false;
