@@ -19,7 +19,7 @@
                         <spring:message code="vote.acceptPart1"/> "${vote.restaurant.name}" <spring:message code="vote.acceptPart2"/>
                     </c:when>
                     <c:otherwise>
-                        Your vote has been changed to restaurant "${vote.restaurant.name}".
+                        <spring:message code="vote.change"/> "${vote.restaurant.name}".
                     </c:otherwise>
                 </c:choose>
             </c:otherwise>
