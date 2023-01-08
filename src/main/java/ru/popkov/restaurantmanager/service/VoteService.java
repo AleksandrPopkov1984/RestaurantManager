@@ -14,7 +14,7 @@ import static ru.popkov.restaurantmanager.util.ValidationUtil.checkNotFoundWithI
 @Service
 public class VoteService {
 
-    public static final LocalTime THRESHOLD_TIME_FOR_CHANGING_VOTE = LocalTime.of(11, 0);
+    public static final LocalTime THRESHOLD_TIME_FOR_CHANGING_VOTE = LocalTime.of(23, 0);
 
     private final VoteRepository repository;
 

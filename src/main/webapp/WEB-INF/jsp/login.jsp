@@ -35,7 +35,7 @@
 <br/>
 <br/>
 <form method="get" action="profile/register">
-    <button type="submit"><spring:message code="login.register"/></button>
+    <button type="submit" class="register"><spring:message code="login.register"/></button>
 </form>
 <c:if test="${param.error}">
     <p><font color="red"><spring:message code="login.invalidData"/></font></p>

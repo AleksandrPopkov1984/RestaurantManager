@@ -50,8 +50,8 @@ public class UserTestData {
     public static final UserToWithFullData userToWithFullData7 = new UserToWithFullData(USER1_ID + 6, "Solomatin", "Aleksandr",
             "a_solomatin@gmail.com", "password", true, null, new HashSet<>(List.of(Role.USER)));
 
-    public static final List<UserToWithFullData> usersToWithFullData = List.of(userToWithFullData1, userToWithFullData2, userToWithFullData3,
-            userToWithFullData4, userToWithFullData5, userToWithFullData6, userToWithFullData7);
+    public static final List<UserToWithFullData> usersToWithFullData = List.of(userToWithFullData1, userToWithFullData2,
+            userToWithFullData3, userToWithFullData4, userToWithFullData5, userToWithFullData6, userToWithFullData7);
 
     public static final UserTo newUserTo = new UserTo(null, "", "", "", "");
     public static final UserTo userTo = new UserTo(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin");

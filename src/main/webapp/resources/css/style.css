@@ -14,7 +14,7 @@ p {
 }
 
 .login_input {
-    background-color: azure;
+    background-color: lightcyan;
     height: 30px;
 }
 
@@ -25,3 +25,38 @@ p {
     color: white;
     background-color: green;
 }
+
+.register {
+    height: 35px;
+    width: 150px;
+    font-size: 20px;
+    color: white;
+    background-color: green;
+}
+
+.header {
+    background: none repeat scroll 0 0 #A6C9E2;
+    color: #2E6E9E;
+    font-size: 20px;
+    padding: 5px 20px;
+    margin: 6px 0;
+}
+
+.header_h2 {
+    font-family: "Berlin Sans FB";
+    font-size: 40px;
+    color: #0022ff;
+}
+
+.admin_buttons {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+}
+

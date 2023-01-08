@@ -9,15 +9,15 @@
 <hr/>
 
 <section>
-    <h2><spring:message code="admin.page"/></h2>
+    <h2 class="header_h2"><spring:message code="admin.page"/></h2>
     <br/>
     <form method="get" action="admin/users">
-        <button type="submit"><spring:message code="admin.users"/></button>
+        <button type="submit" class="admin_buttons"><spring:message code="admin.users"/></button>
         <spring:message code="admin.usersText"/>
     </form>
     <br/>
     <form method="get" action="admin/restaurants">
-        <button type="submit"><spring:message code="admin.restaurants"/></button>
+        <button type="submit" class="admin_buttons"><spring:message code="admin.restaurants"/></button>
         <spring:message code="admin.restaurantsText"/>
 </section>
 </body>
