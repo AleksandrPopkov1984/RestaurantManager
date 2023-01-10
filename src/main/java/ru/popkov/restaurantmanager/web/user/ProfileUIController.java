@@ -1,5 +1,6 @@
 package ru.popkov.restaurantmanager.web.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
+import ru.popkov.restaurantmanager.service.UserService;
 import ru.popkov.restaurantmanager.to.UserTo;
 import ru.popkov.restaurantmanager.web.SecurityUtil;
 
@@ -17,6 +19,9 @@ import javax.validation.Valid;
 public class ProfileUIController extends AbstractUserController {
 
     public static final String URL = "/profile";
+
+    @Autowired
+    private UserService service;
 
     @GetMapping
     public String profile() {
@@ -56,15 +61,17 @@ public class ProfileUIController extends AbstractUserController {
 
     @GetMapping("/test/admin")
     public String loginAsAdmin() {
-        String userName = "a_nikolaev@gmail.com";
-        String password = "admin";
+        int adminId = 100000;
+        String userName = service.get(adminId).getEmail();
+        String password = service.get(adminId).getPassword();
         return "redirect:/login?username=" + userName + "&password=" + password;
     }
 
     @GetMapping("/test/user")
     public String loginAsUser() {
-        String userName = "s_anisimov@gmail.com";
-        String password = "password";
+        int userId = 100002;
+        String userName = service.get(userId).getEmail();
+        String password = service.get(userId).getPassword();
         return "redirect:/login?username=" + userName + "&password=" + password;
     }
 }
