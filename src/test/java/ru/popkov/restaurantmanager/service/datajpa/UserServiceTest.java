@@ -63,7 +63,7 @@ public class UserServiceTest extends AbstractServiceTest {
     @Test
     void duplicateMailCreate() {
         assertThrows(DataAccessException.class, () ->
-                service.create(new User(null, "DuplicateSurname", "DuplicateName", "s_anisimov@gmail.com", "password")));
+                service.create(new User(null, "DuplicateSurname", "DuplicateName", "admin@gmail.com", "password")));
     }
 
     @Test
