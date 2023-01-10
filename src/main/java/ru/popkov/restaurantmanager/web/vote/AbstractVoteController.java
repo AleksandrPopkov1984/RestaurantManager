@@ -7,6 +7,8 @@ import ru.popkov.restaurantmanager.model.Restaurant;
 import ru.popkov.restaurantmanager.model.Vote;
 import ru.popkov.restaurantmanager.service.RestaurantService;
 import ru.popkov.restaurantmanager.service.VoteService;
+import ru.popkov.restaurantmanager.to.VoteTo;
+import ru.popkov.restaurantmanager.util.VoteUtil;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,10 +28,21 @@ public class AbstractVoteController {
         return voteService.get(id);
     }
 
+    public VoteTo getTo(int id, String status) {
+        log.info("get {}", id);
+        return VoteUtil.createTo(voteService.get(id), status);
+    }
+
     public Vote create(int restaurantId, int userId) {
         log.info("create vote for restaurant {}", restaurantId);
         Vote vote = getNew(restaurantId, userId);
         return voteService.create(vote);
+    }
+
+    public VoteTo createTo(int restaurantId, int userId) {
+        log.info("create vote for restaurant {}", restaurantId);
+        Vote vote = getNew(restaurantId, userId);
+        return VoteUtil.createTo(voteService.create(vote), "created");
     }
 
     public boolean update(int id, int restaurantId, int userId) {
