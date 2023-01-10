@@ -55,6 +55,7 @@ public class UserTestData {
 
     public static final UserTo newUserTo = new UserTo(null, "", "", "", "");
     public static final UserTo userTo = new UserTo(USER1_ID, "Vasiljev", "Igor", "i_vasiljev@gmail.com", "admin");
+    public static final UserTo userToFromUser = new UserTo(USER1_ID + 2, "Anisimov", "Sergej", "s_anisimov@gmail.com", "password");
     public static final UserTo updatedUserTo = new UserTo(USER1_ID + 6, "Fedorov", "Petr", "p.fedorov@gmail.com", "password");
 
     public static User getNew() {
