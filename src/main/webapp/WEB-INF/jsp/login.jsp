@@ -40,5 +40,8 @@
 <c:if test="${param.error}">
     <p><font color="red"><spring:message code="login.invalidData"/></font></p>
 </c:if>
+<br/>
+<br/>
+<h4><spring:message code="app.description"/></h4>
 </body>
 </html>
