@@ -23,12 +23,12 @@ public class UserTestData {
     public static final int USER1_ID = START_SEQ;
 
     public static final User user1 = new User(USER1_ID, "AdminSurname", "AdminName", "admin@gmail.com", "admin", Role.ADMIN);
-    public static final User user2 = new User(USER1_ID + 1, "Nikolaev", "Andrej", "a_nikolaev@gmail.com", "admin", Role.ADMIN);
+    public static final User user2 = new User(USER1_ID + 1, "Николаев", "Андрей", "a_nikolaev@gmail.com", "admin", Role.ADMIN);
     public static final User user3 = new User(USER1_ID + 2, "UserSurname", "UserName", "user@gmail.com", "password", Role.USER);
-    public static final User user4 = new User(USER1_ID + 3, "Borodina", "Olga", "o_borodina@gmail.com", "password", Role.USER);
-    public static final User user5 = new User(USER1_ID + 4, "Kolesnikov", "Dmitry", "d_kolesnikov@gmail.com", "password", Role.USER);
-    public static final User user6 = new User(USER1_ID + 5, "Anishenko", "Irina", "i_anishenko@gmail.com", "password", Role.USER);
-    public static final User user7 = new User(USER1_ID + 6, "Solomatin", "Aleksandr", "a_solomatin@gmail.com", "password", Role.USER);
+    public static final User user4 = new User(USER1_ID + 3, "Бородина", "Ольга", "o_borodina@gmail.com", "password", Role.USER);
+    public static final User user5 = new User(USER1_ID + 4, "Колесников", "Дмитрий", "d_kolesnikov@gmail.com", "password", Role.USER);
+    public static final User user6 = new User(USER1_ID + 5, "Анищенко", "Ирина", "i_anishenko@gmail.com", "password", Role.USER);
+    public static final User user7 = new User(USER1_ID + 6, "Соломатин", "Александр", "a_solomatin@gmail.com", "password", Role.USER);
 
     public static final User admin = new User(USER1_ID, "AdminSurname", "AdminName", "admin@gmail.com", "admin", Role.ADMIN, Role.USER);
     public static final User user = new User(USER1_ID + 2, "UserSurname", "UserName", "user@gmail.com", "password", Role.USER);
@@ -37,17 +37,17 @@ public class UserTestData {
 
     public static final UserToWithFullData userToWithFullData1 = new UserToWithFullData(USER1_ID, "AdminSurname", "AdminName",
             "admin@gmail.com", "admin", true, null, new HashSet<>(Arrays.asList(Role.ADMIN)));
-    public static final UserToWithFullData userToWithFullData2 = new UserToWithFullData(USER1_ID + 1, "Nikolaev", "Andrej",
+    public static final UserToWithFullData userToWithFullData2 = new UserToWithFullData(USER1_ID + 1, "Николаев", "Андрей",
             "a_nikolaev@gmail.com", "admin", true, null, new HashSet<>(List.of(Role.ADMIN)));
     public static final UserToWithFullData userToWithFullData3 = new UserToWithFullData(USER1_ID + 2, "UserSurname", "UserName",
             "user@gmail.com", "password", true, null, new HashSet<>(List.of(Role.USER)));
-    public static final UserToWithFullData userToWithFullData4 = new UserToWithFullData(USER1_ID + 3, "Borodina", "Olga",
+    public static final UserToWithFullData userToWithFullData4 = new UserToWithFullData(USER1_ID + 3, "Бородина", "Ольга",
             "o_borodina@gmail.com", "password", true, null, new HashSet<>(List.of(Role.USER)));
-    public static final UserToWithFullData userToWithFullData5 = new UserToWithFullData(USER1_ID + 4, "Kolesnikov", "Dmitry",
+    public static final UserToWithFullData userToWithFullData5 = new UserToWithFullData(USER1_ID + 4, "Колесников", "Дмитрий",
             "d_kolesnikov@gmail.com", "password", true, null, new HashSet<>(List.of(Role.USER)));
-    public static final UserToWithFullData userToWithFullData6 = new UserToWithFullData(USER1_ID + 5, "Anishenko", "Irina",
+    public static final UserToWithFullData userToWithFullData6 = new UserToWithFullData(USER1_ID + 5, "Анищенко", "Ирина",
             "i_anishenko@gmail.com", "password", true, null, new HashSet<>(List.of(Role.USER)));
-    public static final UserToWithFullData userToWithFullData7 = new UserToWithFullData(USER1_ID + 6, "Solomatin", "Aleksandr",
+    public static final UserToWithFullData userToWithFullData7 = new UserToWithFullData(USER1_ID + 6, "Соломатин", "Александр",
             "a_solomatin@gmail.com", "password", true, null, new HashSet<>(List.of(Role.USER)));
 
     public static final List<UserToWithFullData> usersToWithFullData = List.of(userToWithFullData1, userToWithFullData2,
@@ -56,14 +56,14 @@ public class UserTestData {
     public static final UserTo newUserTo = new UserTo(null, "", "", "", "");
     public static final UserTo userTo = new UserTo(USER1_ID, "AdminSurname", "AdminName", "admin@gmail.com", "admin");
     public static final UserTo userToFromUser = new UserTo(USER1_ID + 2, "UserSurname", "UserName", "user@gmail.com", "password");
-    public static final UserTo updatedUserTo = new UserTo(USER1_ID + 6, "Fedorov", "Petr", "p.fedorov@gmail.com", "password");
+    public static final UserTo updatedUserTo = new UserTo(USER1_ID + 6, "Федоров", "Петр", "p.fedorov@gmail.com", "password");
 
     public static User getNew() {
-        return new User(null, "Sviridov", "Ivan", "i.sviridov@Gmail.com", "password");
+        return new User(null, "Свиридов", "Иван", "i.sviridov@Gmail.com", "password");
     }
 
     public static User getUpdated() {
-        return new User(USER1_ID, "Fedorov", "Petr", "p.fedorov@gmail.com", "password");
+        return new User(USER1_ID, "Федоров", "Петр", "p.fedorov@gmail.com", "password");
     }
 
     public static String jsonWithPassword(User user, String passw) {

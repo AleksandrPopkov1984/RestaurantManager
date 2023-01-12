@@ -94,7 +94,7 @@ public class RestaurantAdminUIControllerTest extends AbstractControllerTest {
         int id = updatedRestaurantTo.getId();
         perform(post(URL)
                 .param("id", String.valueOf(RESTAURANT1_ID))
-                .param("name", "Metropol Luxe")
+                .param("name", "Метрополь Luxe")
                 .param("voteCount", "1")
                 .with(userAuth(admin)))
                 .andDo(print())

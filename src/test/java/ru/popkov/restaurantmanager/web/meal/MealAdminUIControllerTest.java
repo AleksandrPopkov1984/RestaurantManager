@@ -43,7 +43,7 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
                         new AssertionMatcher<List<Meal>>() {
                             @Override
                             public void assertion(List<Meal> actual) throws AssertionError {
-                                MEAL_MATCHER.assertMatch(actual, meal1, meal2);
+                                MEAL_MATCHER.assertMatch(actual, meal1, meal2, meal3, meal4, meal5);
                             }
                         }))
                 .andExpect(model().attribute("restaurantId",
@@ -89,7 +89,7 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
                 .param("menuId", String.valueOf(MENU1_ID))
                 .with(userAuth(admin)));
         List<Meal> mealList = service.getOfMenu(MENU1_ID);
-        assertTrue(mealList.size() == 1);
+        assertTrue(mealList.size() == 3);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class MealAdminUIControllerTest extends AbstractControllerTest {
         perform(post(URL)
                 .param("menuId", String.valueOf(MENU1_ID))
                 .param("id", String.valueOf(MEAL1_ID))
-                .param("name", "Chicken and Bacon")
+                .param("name", "Куриный бульон")
                 .param("price", String.valueOf(BigDecimal.valueOf(388)))
                 .with(userAuth(admin)))
                 .andDo(print())

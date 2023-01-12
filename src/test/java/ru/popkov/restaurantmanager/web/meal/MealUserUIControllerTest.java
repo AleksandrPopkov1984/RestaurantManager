@@ -31,7 +31,7 @@ class MealUserUIControllerTest extends AbstractControllerTest {
                         new AssertionMatcher<List<Meal>>() {
                             @Override
                             public void assertion(List<Meal> actual) throws AssertionError {
-                                MEAL_MATCHER.assertMatch(actual, meal1, meal2);
+                                MEAL_MATCHER.assertMatch(actual, meal1, meal2, meal3, meal4, meal5);
                             }
                         }));
     }

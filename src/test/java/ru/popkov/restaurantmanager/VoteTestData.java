@@ -15,7 +15,7 @@ public class VoteTestData {
 
     public static final MatcherFactory.Matcher<Vote> VOTE_MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Vote.class, "restaurant.menus", "restaurant.votes");
 
-    public static final int VOTE1_ID = START_SEQ + 27;
+    public static final int VOTE1_ID = START_SEQ + 34;
 
     public static final Vote vote1 = new Vote(VOTE1_ID, USER1_ID + 2, restaurant1, LocalDate.of(2022, 12, 25), LocalTime.of(10, 0));
     public static final Vote vote2 = new Vote(VOTE1_ID + 1, USER1_ID + 5, restaurant4,

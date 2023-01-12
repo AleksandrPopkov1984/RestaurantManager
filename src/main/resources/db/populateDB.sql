@@ -14,12 +14,12 @@ ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO users (surname, name, email, password)
 VALUES ('AdminSurname', 'AdminName', 'admin@gmail.com', 'admin'),
-       ('Nikolaev', 'Andrej', 'a_nikolaev@gmail.com', 'admin'),
+       ('Николаев', 'Андрей', 'a_nikolaev@gmail.com', 'admin'),
        ('UserSurname', 'UserName', 'user@gmail.com', 'password'),
-       ('Borodina', 'Olga', 'o_borodina@gmail.com', 'password'),
-       ('Kolesnikov', 'Dmitry', 'd_kolesnikov@gmail.com', 'password'),
-       ('Anishenko', 'Irina', 'i_anishenko@gmail.com', 'password'),
-       ('Solomatin', 'Aleksandr', 'a_solomatin@gmail.com', 'password');
+       ('Бородина', 'Ольга', 'o_borodina@gmail.com', 'password'),
+       ('Колесников', 'Дмитрий', 'd_kolesnikov@gmail.com', 'password'),
+       ('Анищенко', 'Ирина', 'i_anishenko@gmail.com', 'password'),
+       ('Соломатин', 'Александр', 'a_solomatin@gmail.com', 'password');
 
 INSERT INTO user_roles(user_id, role)
 VALUES (100000, 'ADMIN'),
@@ -31,11 +31,11 @@ VALUES (100000, 'ADMIN'),
        (100006, 'USER');
 
 INSERT INTO restaurants (name)
-VALUES ('Metropol'),
-       ('Tokio'),
-       ('Art-Caviar'),
-       ('Karl and Fridrich'),
-       ('Russian fishing');
+VALUES ('Метрополь'),
+       ('Токио Сити'),
+       ('Сыроварня'),
+       ('Карл и Фридрих'),
+       ('Русская рыбалка');
 
 INSERT INTO menus(date, restaurant_id)
 VALUES ('2022-12-20', 100007),
@@ -45,16 +45,23 @@ VALUES ('2022-12-20', 100007),
        ('2022-12-21', 100011);
 
 INSERT INTO meals (name, price, menu_id)
-VALUES ('Chicken and Bacon', 200, 100012),
-       ('Steak and Onion Ciabatta', 300, 100012),
-       ('Sausage and Onion Sandwich', 250, 100013),
-       ('Lamb & Apricot Curry', 600, 100013),
-       ('Roasted Chicken Legs', 400, 100014),
-       ('Sweet & Sour Pork', 200, 100014),
-       ('Fish Fingers', 310, 100015),
-       ('Mixed Salad', 550, 100015),
-       ('Ginger Sponge Pudding', 480, 100016),
-       ('Baked Beans', 150, 100016);
+VALUES ('Куриный бульон', 260, 100012),
+       ('Солянка мясная', 390, 100012),
+       ('Уха из ладожского судака', 760, 100012),
+       ('Рыбные котлеты с соусом по-польски', 600, 100012),
+       ('Медальоны из лосося с овощами', 950, 100012),
+       ('Том Ям с морепродуктами', 530, 100013),
+       ('Филадельфия Люкс', 580, 100013),
+       ('Ролл Запеченый краб', 300, 100013),
+       ('Борщ', 680, 100014),
+       ('Стейк Рибай', 1350, 100014),
+       ('Шашлык куриный', 1000, 100014),
+       ('Салат из овощей', 450, 100015),
+       ('Цезарь с креветками', 780, 100015),
+       ('Мюнхенские колбаски', 750, 100015),
+       ('Филе семги', 2000, 100015),
+       ('Уха из трех видов рыбы', 780, 100016),
+       ('Котлеты из щуки', 920, 100016);
 
 INSERT INTO votes (user_id, restaurant_id, date, time)
 VALUES (100002, 100007, '2022-12-25', '10:00:00'),
