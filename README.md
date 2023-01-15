@@ -3,9 +3,6 @@
 ## REST and UI interfaces covered with JUnit tests by Spring MVC Test и Spring Security Test.
 
 ##  Technical specifications:
-### Design and implement a REST API using Hibernate/Spring/SpringMVC (or Spring-Boot) without frontend.
-
-### The task is:
 
 ### Build a voting system for deciding where to have lunch.
 
