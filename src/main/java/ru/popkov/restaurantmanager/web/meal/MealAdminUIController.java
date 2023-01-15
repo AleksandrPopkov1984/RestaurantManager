@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.popkov.restaurantmanager.model.Menu;
 import ru.popkov.restaurantmanager.model.Restaurant;
 import ru.popkov.restaurantmanager.to.MealTo;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
 
+@ApiIgnore
 @Controller
 @RequestMapping(MealAdminUIController.URL)
 public class MealAdminUIController extends AbstractMealController {

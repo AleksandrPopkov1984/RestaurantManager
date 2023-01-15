@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.popkov.restaurantmanager.to.RestaurantTo;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
+@ApiIgnore
 @Controller
 @RequestMapping(RestaurantAdminUIController.URL)
 public class RestaurantAdminUIController extends AbstractRestaurantController {

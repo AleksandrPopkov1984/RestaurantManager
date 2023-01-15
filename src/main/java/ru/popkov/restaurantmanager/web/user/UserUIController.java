@@ -4,10 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.popkov.restaurantmanager.to.UserTo;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+@ApiIgnore
 @Controller
 @RequestMapping(UserUIController.URL)
 public class UserUIController extends AbstractUserController {

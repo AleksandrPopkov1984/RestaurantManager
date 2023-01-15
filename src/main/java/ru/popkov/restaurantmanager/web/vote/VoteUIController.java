@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.popkov.restaurantmanager.model.Vote;
 import ru.popkov.restaurantmanager.web.SecurityUtil;
+import springfox.documentation.annotations.ApiIgnore;
 
 import static ru.popkov.restaurantmanager.service.VoteService.THRESHOLD_TIME_FOR_CHANGING_VOTE;
 
+@ApiIgnore
 @Controller
 @RequestMapping(VoteUIController.URL)
 public class VoteUIController extends AbstractVoteController {

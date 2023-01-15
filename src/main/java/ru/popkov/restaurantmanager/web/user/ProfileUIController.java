@@ -11,9 +11,11 @@ import org.springframework.web.bind.support.SessionStatus;
 import ru.popkov.restaurantmanager.service.UserService;
 import ru.popkov.restaurantmanager.to.UserTo;
 import ru.popkov.restaurantmanager.web.SecurityUtil;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
+@ApiIgnore
 @Controller
 @RequestMapping(ProfileUIController.URL)
 public class ProfileUIController extends AbstractUserController {

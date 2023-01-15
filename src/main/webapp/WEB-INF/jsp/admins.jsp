@@ -19,6 +19,10 @@
     <form method="get" action="admin/restaurants">
         <button type="submit" class="admin_buttons"><spring:message code="admin.restaurants"/></button>
         <spring:message code="admin.restaurantsText"/>
+    </form>
+    <br/>
+    <br/>
+    <a href="swagger-ui.html"><spring:message code="common.swagger"/></a>
 </section>
 </body>
 </html>

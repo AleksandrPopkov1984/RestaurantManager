@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ru.popkov.restaurantmanager.model.Role;
 import ru.popkov.restaurantmanager.model.User;
 import ru.popkov.restaurantmanager.service.UserService;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.Objects;
 
+@ApiIgnore
 @Controller
 public class RootController {
 

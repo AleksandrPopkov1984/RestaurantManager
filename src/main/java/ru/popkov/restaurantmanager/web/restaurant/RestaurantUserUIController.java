@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.popkov.restaurantmanager.model.Restaurant;
+import springfox.documentation.annotations.ApiIgnore;
 
+@ApiIgnore
 @Controller
 @RequestMapping(RestaurantUserUIController.URL)
 public class RestaurantUserUIController extends AbstractRestaurantController {

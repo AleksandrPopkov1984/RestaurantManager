@@ -13,8 +13,8 @@
     <sec:authorize access="hasRole('ROLE_ADMIN')">
         <a href="admin/restaurants/create"><spring:message code="restaurant.add"/></a>
     </sec:authorize>
-        <br/>
-        <br/>
+    <br/>
+    <br/>
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
@@ -59,6 +59,11 @@
             </tr>
         </c:forEach>
     </table>
+    <sec:authorize access="hasRole('ROLE_USER')">
+        <br/>
+        <br/>
+        <a href="swagger-ui.html"><spring:message code="common.swagger"/></a>
+    </sec:authorize>
 </section>
 </body>
 </html>
